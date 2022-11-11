@@ -15,6 +15,18 @@ const theme = createTheme({
       default: "#202124",
     },
   },
+  components: {
+    MuiTextField: {
+      variants: [
+        {
+          props: { variant: "filled" },
+          style: {
+            backgroundColor: "#dddddd",
+          },
+        },
+      ],
+    },
+  },
 })
 
 export default theme
