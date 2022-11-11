@@ -8,7 +8,7 @@ import SearchInput from "./components/search-input"
 export default function Home() {
   const [selectedStation, setSelectedStation] = useState<number>()
 
-  const handleSelectedStation = (id: number) => {
+  const handleSelectedStation = (id: number | undefined) => {
     setSelectedStation(id)
   }
 
