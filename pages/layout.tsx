@@ -1,39 +1,24 @@
 import { ReactNode } from "react"
 import styled from "@emotion/styled"
+import { Box } from "@mui/material"
 
 interface Layout {
-	children: ReactNode
+  children: ReactNode
 }
 
 const Root = styled.div`
-	display: flex;
-	justify-content: center;
-`
-
-export const Page = styled.div`
-	display: flex;
-	flex-direction: column;
-	min-height: 100vh;
-	width: 100%;
-	@media (min-width: 1080px) {
-		max-width: 650px;
-	}
-`
-
-export const Main = styled.div`
-	display: flex;
-	flex-direction: column;
-	flex: 1 0 auto;
+  display: flex;
+  justify-content: center;
 `
 
 const Layout = ({ children }: Layout) => {
-	return (
-		<Root>
-			<Page>
-				<Main>{children}</Main>
-			</Page>
-		</Root>
-	)
+  return (
+    <Root>
+      <Box sx={{ backgroundColor: "background.default" }} width="100%">
+        {children}
+      </Box>
+    </Root>
+  )
 }
 
 export default Layout
