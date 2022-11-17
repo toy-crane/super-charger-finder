@@ -1,6 +1,7 @@
 import { ReactNode } from "react"
 import styled from "@emotion/styled"
 import { Box } from "@mui/material"
+import { Container } from "@mui/system"
 
 interface Layout {
   children: ReactNode
@@ -9,15 +10,15 @@ interface Layout {
 const Root = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
   justify-content: center;
+  min-height: 100vh;
 `
 
 const Layout = ({ children }: Layout) => {
   return (
     <Root>
       <Box sx={{ backgroundColor: "background.default", flex: 1 }} width="100%">
-        {children}
+        <Container maxWidth="sm">{children}</Container>
       </Box>
     </Root>
   )

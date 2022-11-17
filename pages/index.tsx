@@ -17,13 +17,13 @@ export default function Home() {
     : superChargerInfo
 
   return (
-    <Container maxWidth="sm">
+    <>
       <SearchInput onInputChange={handleSelectedStation} />
       <Stack spacing={2} my={3}>
         {searchedStations.map((item) => (
           <ChargingStationCard {...item} key={item.name} />
         ))}
       </Stack>
-    </Container>
+    </>
   )
 }
