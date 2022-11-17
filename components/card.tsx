@@ -1,4 +1,5 @@
 import { Card, CardContent, Typography } from "@mui/material"
+import { useRouter } from "next/router"
 import { SuperCharger } from "../data"
 
 interface ChargingStationCardProps extends SuperCharger {}
@@ -6,19 +7,25 @@ interface ChargingStationCardProps extends SuperCharger {}
 const ChargingStationCard = ({
   region,
   name,
-  location,
+  address: { locationDetail },
   freeParkingChargeTime,
   chargingSpeed,
   DcCount,
+  id,
 }: ChargingStationCardProps) => {
+  const router = useRouter()
+  const handleClick = () => {
+    router.push(`/stations/${id}`)
+  }
+
   return (
-    <Card sx={{ minWidth: 275 }} variant="outlined">
+    <Card sx={{ minWidth: 275 }} variant="outlined" onClick={handleClick}>
       <CardContent>
         <Typography variant="h5" component="div">
           {region} | {name}
         </Typography>
         <Typography color="text.secondary" sx={{ mb: 1 }}>
-          {location}
+          {locationDetail}
         </Typography>
         <Typography variant="body2">
           무료 회차:{" "}
