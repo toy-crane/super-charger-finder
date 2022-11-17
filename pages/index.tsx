@@ -1,9 +1,9 @@
 import React, { useState } from "react"
 
-import { superChargerInfo } from "./data"
-import { Container, Stack } from "@mui/material"
-import ChargingStationCard from "./components/card"
-import SearchInput from "./components/search-input"
+import { Stack } from "@mui/material"
+import ChargingStationCard from "../components/card"
+import SearchInput from "../components/search-input"
+import { superChargerInfo } from "../data"
 
 export default function Home() {
   const [selectedStation, setSelectedStation] = useState<number>()
