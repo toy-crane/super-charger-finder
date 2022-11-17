@@ -8,13 +8,15 @@ interface Layout {
 
 const Root = styled.div`
   display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   justify-content: center;
 `
 
 const Layout = ({ children }: Layout) => {
   return (
     <Root>
-      <Box sx={{ backgroundColor: "background.default" }} width="100%">
+      <Box sx={{ backgroundColor: "background.default", flex: 1 }} width="100%">
         {children}
       </Box>
     </Root>
