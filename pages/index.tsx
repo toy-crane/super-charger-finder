@@ -1,10 +1,10 @@
 import React, { useState } from "react"
 
-import { Dialog, Stack } from "@mui/material"
+import { Stack } from "@mui/material"
 import ChargingStationCard from "../components/card"
 import SearchInput from "../components/search-input"
 import { superChargerInfo } from "../data"
-import StationDetailCard from "../components/station-detail-card"
+import StationModal from "../components/station-modal"
 
 export default function Home() {
   const [selectedStationId, setSelectedStationId] = useState<number>()
@@ -50,22 +50,11 @@ export default function Home() {
           />
         ))}
       </Stack>
-      <Dialog
+      <StationModal
         open={open}
         onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-        PaperProps={{
-          sx: {
-            position: "fixed",
-            bottom: 0,
-            m: 0,
-            width: "100%",
-          },
-        }}
-      >
-        {selectedStation && <StationDetailCard {...selectedStation} />}
-      </Dialog>
+        selectedStation={selectedStation}
+      />
     </>
   )
 }
