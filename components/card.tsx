@@ -2,7 +2,9 @@ import { Card, CardContent, Typography } from "@mui/material"
 import { useRouter } from "next/router"
 import { SuperCharger } from "../data"
 
-interface ChargingStationCardProps extends SuperCharger {}
+interface ChargingStationCardProps extends SuperCharger {
+  onClick: (id: number) => void
+}
 
 const ChargingStationCard = ({
   region,
@@ -11,11 +13,12 @@ const ChargingStationCard = ({
   freeParkingChargeTime,
   chargingSpeed,
   DcCount,
+  onClick,
   id,
 }: ChargingStationCardProps) => {
   const router = useRouter()
   const handleClick = () => {
-    router.push(`/stations/${id}`)
+    onClick(id)
   }
 
   return (

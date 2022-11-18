@@ -6,7 +6,7 @@ import {
   CardContent,
   Typography,
 } from "@mui/material"
-import { SuperCharger } from "../../../data"
+import { SuperCharger } from "../data"
 
 interface StationDetailCardProps extends SuperCharger {}
 
@@ -20,7 +20,7 @@ const StationDetailCard = ({
   parkingFee,
   parkingFeeDiscount,
 }: StationDetailCardProps) => (
-  <Card sx={{ width: "100%" }}>
+  <Card sx={{ width: "100%", px: 3, py: 1 }}>
     <CardContent>
       <Typography variant="h5">{name}</Typography>
       <Typography variant="body1" color="text.secondary" mb={2}>
