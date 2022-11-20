@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 
-import { Stack } from "@mui/material"
+import { Box, Container, Stack } from "@mui/material"
 import ChargingStationCard from "../components/card"
 import SearchInput from "../components/search-input"
 import { superChargerInfo } from "../data"
@@ -77,7 +77,9 @@ export default function Home() {
         />
         <meta name="theme-color" content="#ffffff" />
       </Head>
-      <SearchInput onInputChange={handleSearchedStation} />
+      <Box sx={{ position: "sticky", top: -1, pt: 1 }}>
+        <SearchInput onInputChange={handleSearchedStation} />
+      </Box>
       <Stack spacing={2} my={3}>
         {searchedStations.map((item) => (
           <ChargingStationCard
