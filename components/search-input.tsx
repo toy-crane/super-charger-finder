@@ -19,7 +19,6 @@ const SearchInput = () => {
       onChange={(_, value) =>
         value ? handleInputChage(value.id) : handleInputChage(undefined)
       }
-      sx={{ my: 2 }}
       renderInput={(params) => (
         <TextField
           {...params}

@@ -8,6 +8,7 @@ import StationModal from "../components/station-modal"
 import Head from "next/head"
 import { searchedStationIdState } from "../atoms"
 import { useRecoilValue } from "recoil"
+import Layout from "../components/layout"
 
 export default function Home() {
   const [selectedStationId, setSelectedStationId] = useState<number>()
@@ -75,18 +76,22 @@ export default function Home() {
         />
         <meta name="theme-color" content="#ffffff" />
       </Head>
-      <Box sx={{ position: "sticky", top: -1, pt: 1 }}>
-        <SearchInput />
-      </Box>
-      <Stack spacing={2} my={3}>
-        {searchedStations.map((item) => (
-          <ChargingStationCard
-            {...item}
-            key={item.name}
-            onClick={handleCardClick}
-          />
-        ))}
-      </Stack>
+      <Layout.Header>
+        <Container maxWidth="sm" sx={{ mx: "auto", py: 2 }}>
+          <SearchInput />
+        </Container>
+      </Layout.Header>
+      <Layout.Main>
+        <Stack spacing={2} my={3}>
+          {searchedStations.map((item) => (
+            <ChargingStationCard
+              {...item}
+              key={item.name}
+              onClick={handleCardClick}
+            />
+          ))}
+        </Stack>
+      </Layout.Main>
       <StationModal
         open={open}
         onClose={handleClose}
