@@ -6,20 +6,18 @@ import SearchInput from "../components/search-input"
 import { superChargerInfo } from "../data"
 import StationModal from "../components/station-modal"
 import Head from "next/head"
+import { searchedStationIdState } from "../atoms"
+import { useRecoilValue } from "recoil"
 
 export default function Home() {
   const [selectedStationId, setSelectedStationId] = useState<number>()
-  const [searchedStationId, setSearchedStationId] = useState<number>()
+  const searchedStationId = useRecoilValue(searchedStationIdState)
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
 
   const handleSelectedStation = (id: number | undefined) => {
     setSelectedStationId(id)
-  }
-
-  const handleSearchedStation = (id: number | undefined) => {
-    setSearchedStationId(id)
   }
 
   const selectedStation = superChargerInfo.find(
@@ -78,7 +76,7 @@ export default function Home() {
         <meta name="theme-color" content="#ffffff" />
       </Head>
       <Box sx={{ position: "sticky", top: -1, pt: 1 }}>
-        <SearchInput onInputChange={handleSearchedStation} />
+        <SearchInput />
       </Box>
       <Stack spacing={2} my={3}>
         {searchedStations.map((item) => (

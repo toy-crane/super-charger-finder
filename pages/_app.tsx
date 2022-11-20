@@ -5,6 +5,7 @@ import Layout from "../components/layout"
 import globalStyle from "../style/global-style"
 import normalize from "../style/nomalize"
 import theme from "../style/theme"
+import { RecoilRoot } from "recoil"
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -16,9 +17,11 @@ export default function App({ Component, pageProps }: AppProps) {
         `}
       />
       <ThemeProvider theme={theme}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <RecoilRoot>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </RecoilRoot>
       </ThemeProvider>
     </>
   )
