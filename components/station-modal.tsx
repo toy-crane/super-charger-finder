@@ -1,4 +1,4 @@
-import { Dialog } from "@mui/material"
+import { autocompleteClasses, Dialog } from "@mui/material"
 import { SuperCharger } from "../data"
 import StationDetailCard from "./station-detail-card"
 
@@ -18,11 +18,14 @@ const StationModal = ({
     onClose={onClose}
     aria-labelledby="modal-modal-title"
     aria-describedby="modal-modal-description"
+    sx={{
+      m: 0,
+    }}
     PaperProps={{
       sx: {
         position: "fixed",
-        bottom: 0,
         m: 0,
+        bottom: 0,
         width: "100%",
       },
     }}

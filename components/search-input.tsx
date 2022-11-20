@@ -19,7 +19,6 @@ const SearchInput = ({ onInputChange }: SearchInputProps) => {
         renderInput={(params) => (
           <TextField
             {...params}
-            variant="filled"
             label="충전소 위치, 지역 검색"
             InputProps={{
               ...params.InputProps,

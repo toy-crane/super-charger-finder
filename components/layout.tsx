@@ -17,7 +17,7 @@ const Root = styled.div`
 const Layout = ({ children }: Layout) => {
   return (
     <Root>
-      <Box sx={{ backgroundColor: "background.default", flex: 1 }} width="100%">
+      <Box sx={{ flex: 1 }} width="100%">
         <Container maxWidth="sm">{children}</Container>
       </Box>
     </Root>
