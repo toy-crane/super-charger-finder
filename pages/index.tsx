@@ -86,10 +86,10 @@ export default function Home() {
             py: 2,
             display: "flex",
             alignItems: "center",
-            gap: 2,
+            gap: 1,
           }}
         >
-          <Image src="/logo.png" alt="logo" width={100} height={40} />
+          <Image src="/logo.png" alt="logo" width={60} height={40} />
           <SearchInput />
         </Container>
       </Layout.Header>
