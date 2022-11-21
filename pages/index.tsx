@@ -6,9 +6,11 @@ import SearchInput from "../components/search-input"
 import { superChargerInfo } from "../data"
 import StationModal from "../components/station-modal"
 import Head from "next/head"
+import Image from "next/image"
 import { searchedStationIdState } from "../atoms"
 import { useRecoilValue } from "recoil"
 import Layout from "../components/layout"
+import ElectricBoltOutlinedIcon from "@mui/icons-material/ElectricBoltOutlined"
 
 export default function Home() {
   const [selectedStationId, setSelectedStationId] = useState<number>()
@@ -77,7 +79,17 @@ export default function Home() {
         <meta name="theme-color" content="#ffffff" />
       </Head>
       <Layout.Header>
-        <Container maxWidth="sm" sx={{ mx: "auto", py: 2 }}>
+        <Container
+          maxWidth="sm"
+          sx={{
+            mx: "auto",
+            py: 2,
+            display: "flex",
+            alignItems: "center",
+            gap: 2,
+          }}
+        >
+          <Image src="/logo.png" alt="logo" width={100} height={40} />
           <SearchInput />
         </Container>
       </Layout.Header>

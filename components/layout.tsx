@@ -37,9 +37,7 @@ const Header = ({ children }: HeaderProps) => {
         top: 0,
         zIndex: 999,
         backgroundColor: "white",
-        borderColor: "#E7EBF0",
-        borderBottomWidth: "thin",
-        borderStyle: "solid",
+        borderBottom: "thin solid #E7EBF0",
         backdropFilter: "blur(20px)",
       }}
     >

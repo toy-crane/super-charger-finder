@@ -14,6 +14,7 @@ const SearchInput = () => {
     <Autocomplete
       id="search input"
       options={superChargerInfo}
+      sx={{ flex: 1 }}
       noOptionsText="조건에 맞는 슈퍼차저가 존재하지 않습니다."
       getOptionLabel={(option) => `${option.region} | ${option.name}`}
       onChange={(_, value) =>
