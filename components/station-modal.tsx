@@ -1,6 +1,13 @@
-import { autocompleteClasses, Dialog } from "@mui/material"
+import {
+  autocompleteClasses,
+  Button,
+  Dialog,
+  DialogActions,
+  IconButton,
+} from "@mui/material"
 import { SuperCharger } from "../data"
 import StationDetailCard from "./station-detail-card"
+import CloseIcon from "@mui/icons-material/Close"
 
 interface StationModalProps {
   open: boolean
@@ -30,6 +37,17 @@ const StationModal = ({
       },
     }}
   >
+    <IconButton
+      aria-label="close"
+      onClick={onClose}
+      sx={{
+        position: "absolute",
+        right: 8,
+        top: 8,
+      }}
+    >
+      <CloseIcon />
+    </IconButton>
     {selectedStation && <StationDetailCard {...selectedStation} />}
   </Dialog>
 )

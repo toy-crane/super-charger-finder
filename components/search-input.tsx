@@ -24,6 +24,7 @@ const SearchInput = () => {
         <TextField
           {...params}
           label="충전소 위치, 지역 검색"
+          unselectable="off"
           InputProps={{
             ...params.InputProps,
           }}
