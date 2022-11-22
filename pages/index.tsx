@@ -43,7 +43,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>가장 효율적인 슈퍼차저를 찾아 보세요</title>
+        <title>가장 저렴한 슈퍼차저를 찾아보세요.</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Super charger Finder" />
@@ -82,6 +82,10 @@ export default function Home() {
         <meta property="og:image:height" content="400" />
         <meta property="og:title" content="슈차 파인더" />
         <meta property="og:site_name" content="슈차 파인더" />
+        <meta
+          property="og:description"
+          content="가장 저렴한 슈퍼차저를 찾아보세요."
+        />
         <meta
           property="og:url"
           content="https://super-charger-finder.vercel.app/"
