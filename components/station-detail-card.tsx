@@ -1,10 +1,12 @@
 import {
   Box,
   Button,
+  ButtonProps,
   Card,
   CardActions,
   CardContent,
   Link,
+  styled,
   Typography,
 } from "@mui/material"
 import { SuperCharger } from "../data"
@@ -81,12 +83,18 @@ const StationDetailCard = ({
         )}
 
         <CardActions>
-          <Link
-            href={`tmap://?rGoName=${name}&rGoX=${longitude}&rGoY=${latitude}`}
+          <Button
+            variant="outlined"
+            color="info"
+            onClick={() =>
+              (document.location = `tmap://?rGoName=${name}&rGoX=${longitude}&rGoY=${latitude}`)
+            }
           >
-            TMAP으로 보내기
-          </Link>
-          <Button onClick={handleShare}>테슬라로 경로 전송</Button>
+            TMAP으로 경로 전송
+          </Button>
+          <Button onClick={handleShare} variant="outlined" color="primary">
+            테슬라로 경로 전송
+          </Button>
         </CardActions>
       </CardContent>
     </Card>
