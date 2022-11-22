@@ -88,8 +88,7 @@ const StationDetailCard = ({
           <RWebShare
             data={{
               text: street,
-              title: "테슬라 앱으로 이 경로를 전송합니다.",
-              url: "https://super-charger-finder.vercel.app/",
+              title: street,
             }}
             sites={["copy"]}
             onClick={() => console.info("share successful!")}
