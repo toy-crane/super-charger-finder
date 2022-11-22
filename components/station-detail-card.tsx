@@ -90,17 +90,23 @@ const StationDetailCard = ({
           </Box>
         )}
 
-        <CardActions>
+        <CardActions sx={{ flexDirection: "column", gap: 1 }} disableSpacing>
           <Button
             variant="outlined"
             color="info"
+            fullWidth
             onClick={() =>
               (document.location = `tmap://?rGoName=${name}&rGoX=${longitude}&rGoY=${latitude}`)
             }
           >
             TMAP으로 경로 전송
           </Button>
-          <Button onClick={handleShare} variant="outlined" color="primary">
+          <Button
+            onClick={handleShare}
+            variant="outlined"
+            color="primary"
+            fullWidth
+          >
             테슬라로 경로 전송
           </Button>
         </CardActions>
