@@ -10,7 +10,7 @@ import Image from "next/image"
 import { searchedStationIdState } from "../atoms"
 import { useRecoilValue } from "recoil"
 import Layout from "../components/layout"
-import ElectricBoltOutlinedIcon from "@mui/icons-material/ElectricBoltOutlined"
+import { useRouter } from "next/router"
 
 export default function Home() {
   const [selectedStationId, setSelectedStationId] = useState<number>()
@@ -18,6 +18,8 @@ export default function Home() {
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
+
+  const { push } = useRouter()
 
   const handleSelectedStation = (id: number | undefined) => {
     setSelectedStationId(id)
@@ -98,12 +100,21 @@ export default function Home() {
             mx: "auto",
             py: 2,
             display: "flex",
-            alignItems: "center",
-            gap: 1,
           }}
         >
-          <Image src="/logo.png" alt="logo" width={60} height={40} />
-          <SearchInput />
+          <Box
+            sx={{ display: "flex", flexDirection: "column", gap: 2, flex: 1 }}
+          >
+            <Image
+              src="/logo.png"
+              alt="logo"
+              width={80}
+              height={40}
+              onClick={() => push("/")}
+              style={{ cursor: "pointer" }}
+            />
+            <SearchInput />
+          </Box>
         </Container>
       </Layout.Header>
       <Layout.Main>
