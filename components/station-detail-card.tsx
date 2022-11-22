@@ -38,7 +38,7 @@ const StationDetailCard = ({
     }
   }
   return (
-    <Card sx={{ px: 4 }}>
+    <Card sx={{ px: 3 }}>
       <CardContent>
         <Chip
           color="primary"
