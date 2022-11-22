@@ -4,6 +4,7 @@ import {
   Card,
   CardActions,
   CardContent,
+  Link,
   Typography,
 } from "@mui/material"
 import { SuperCharger } from "../data"
@@ -19,6 +20,7 @@ const StationDetailCard = ({
   freeParkingChargeTime,
   parkingFee,
   parkingFeeDiscount,
+  gps: { latitude, longitude },
 }: StationDetailCardProps) => (
   <Card sx={{ px: 4 }}>
     <CardContent>
@@ -66,12 +68,16 @@ const StationDetailCard = ({
       )}
 
       <CardActions>
-        <Button size="large" color="primary" variant="contained">
-          테슬라로 경로 보내기
-        </Button>
-        <Button size="large" color="secondary" variant="contained">
-          TMAP으로 경로 보내기
-        </Button>
+        <Link
+          href={`tmap://?rGoName=${name}&rGoX=${longitude}&rGoY=${latitude}`}
+        >
+          TMAP으로 보내기
+        </Link>
+        <Link
+          href={`tmap://?rGoName=${name}&rGoX=${longitude}&rGoY=${latitude}`}
+        >
+          테슬라로 보내기
+        </Link>
       </CardActions>
     </CardContent>
   </Card>
