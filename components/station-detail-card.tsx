@@ -5,6 +5,7 @@ import {
   Card,
   CardActions,
   CardContent,
+  Chip,
   Link,
   styled,
   Typography,
@@ -39,6 +40,13 @@ const StationDetailCard = ({
   return (
     <Card sx={{ px: 4 }}>
       <CardContent>
+        <Chip
+          color="primary"
+          size="small"
+          variant={chargingSpeed === "250W" ? "filled" : "outlined"}
+          label={chargingSpeed === "250W" ? "V3 | 250W" : "V2 | 120W"}
+          sx={{ mb: 1 }}
+        ></Chip>
         <Typography variant="h5">{name}</Typography>
         <Typography variant="body1" color="text.secondary" mb={2}>
           {street} | {locationDetail}
@@ -46,7 +54,7 @@ const StationDetailCard = ({
         <Box sx={{ mb: 3 }}>
           <Typography variant="subtitle1">충전</Typography>
           <Typography variant="body2" color="text.secondary">
-            슈퍼 차저: {stallCount}기 | {chargingSpeed}
+            슈퍼 차저: {stallCount}기
           </Typography>
           {DcCount && (
             <Typography variant="body2" color="text.secondary">
