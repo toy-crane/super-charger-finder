@@ -46,11 +46,11 @@ const StationDetailCard = ({
         <Box sx={{ mb: 3 }}>
           <Typography variant="subtitle1">충전</Typography>
           <Typography variant="body2" color="text.secondary">
-            슈퍼 차저 대수 - {chargingSpeed} {stallCount}기
+            슈퍼 차저: {stallCount}기 | {chargingSpeed}
           </Typography>
           {DcCount && (
             <Typography variant="body2" color="text.secondary">
-              데스티네이션 차저 대수 - {DcCount}기
+              데스티네이션 차저: {DcCount}기
             </Typography>
           )}
         </Box>
