@@ -14,7 +14,7 @@ interface StationDetailCardProps extends SuperCharger {}
 
 const StationDetailCard = ({
   name,
-  address,
+  address: { street, locationDetail },
   stallCount,
   DcCount,
   chargingSpeed,
@@ -38,7 +38,7 @@ const StationDetailCard = ({
       <CardContent>
         <Typography variant="h5">{name}</Typography>
         <Typography variant="body1" color="text.secondary" mb={2}>
-          {address.street} | {address.locationDetail}
+          {street} | {locationDetail}
         </Typography>
         <Box sx={{ mb: 3 }}>
           <Typography variant="subtitle1">충전</Typography>
@@ -87,9 +87,9 @@ const StationDetailCard = ({
           </Link>
           <RWebShare
             data={{
-              text: name,
-              url: "https://on.natgeo.com/2zHaNup",
+              text: street,
               title: "테슬라 앱으로 이 경로를 전송합니다.",
+              url: "https://super-charger-finder.vercel.app/",
             }}
             sites={["copy"]}
             onClick={() => console.info("share successful!")}
