@@ -1,6 +1,19 @@
 import React, { useState } from "react"
 
-import { Box, Container, Stack } from "@mui/material"
+import {
+  Box,
+  Container,
+  Divider,
+  Drawer,
+  IconButton,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Stack,
+} from "@mui/material"
+import FeedbackIcon from "@mui/icons-material/Feedback"
 import ChargingStationCard from "../components/card"
 import SearchInput from "../components/search-input"
 import { superChargerInfo } from "../data"
@@ -11,11 +24,15 @@ import { searchedStationIdState } from "../atoms"
 import { useRecoilValue } from "recoil"
 import Layout from "../components/layout"
 import { useRouter } from "next/router"
+import MenuIcon from "@mui/icons-material/Menu"
+import { ShareLocation } from "@mui/icons-material"
 
 export default function Home() {
   const [selectedStationId, setSelectedStationId] = useState<number>()
   const searchedStationId = useRecoilValue(searchedStationIdState)
   const [open, setOpen] = useState(false)
+  const [openDrawer, setOpenDrawer] = useState(false)
+  const handleDraweropen = () => setOpenDrawer((openDrawer) => !openDrawer)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
 
@@ -100,21 +117,19 @@ export default function Home() {
             mx: "auto",
             py: 2,
             display: "flex",
+            gap: 1,
           }}
         >
-          <Box
-            sx={{ display: "flex", flexDirection: "column", gap: 2, flex: 1 }}
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            onClick={handleDraweropen}
           >
-            <Image
-              src="/logo.png"
-              alt="logo"
-              width={80}
-              height={40}
-              onClick={() => push("/")}
-              style={{ cursor: "pointer" }}
-            />
-            <SearchInput />
-          </Box>
+            <MenuIcon />
+          </IconButton>
+          <SearchInput />
         </Container>
       </Layout.Header>
       <Layout.Main>
@@ -133,6 +148,41 @@ export default function Home() {
         onClose={handleClose}
         selectedStation={selectedStation}
       />
+      <Drawer anchor={"left"} open={openDrawer} onClose={handleDraweropen}>
+        <Box
+          width={200}
+          p={2}
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 1,
+          }}
+        >
+          <Box sx={{ justifySelf: "center", alignSelf: "center" }}>
+            <Image
+              src="/logo.png"
+              alt="logo"
+              width={120}
+              height={40}
+              onClick={handleDraweropen}
+              style={{ cursor: "pointer" }}
+            />
+          </Box>
+          <Divider />
+          <List>
+            <ListItem>
+              <ListItemButton>
+                <ListItemText
+                  primary="기능 제안하기"
+                  onClick={() =>
+                    (document.location = "https://forms.gle/zPZq9HV2UcLoLYyM9")
+                  }
+                />
+              </ListItemButton>
+            </ListItem>
+          </List>
+        </Box>
+      </Drawer>
     </>
   )
 }
