@@ -7,10 +7,11 @@ import {
   Link,
   Typography,
 } from "@mui/material"
-import { RWebShare } from "react-web-share"
 import { SuperCharger } from "../data"
 
 interface StationDetailCardProps extends SuperCharger {}
+
+const isShareSupported = () => navigator.share ?? false
 
 const StationDetailCard = ({
   name,
@@ -24,10 +25,10 @@ const StationDetailCard = ({
   gps: { latitude, longitude },
 }: StationDetailCardProps) => {
   const handleShare = () => {
-    if (navigator.share) {
+    if (isShareSupported()) {
       navigator.share({
-        title: "기록하며 성장하기",
-        text: "Hello World",
+        title: street,
+        text: street,
       })
     } else {
       alert("공유하기가 지원되지 않는 환경 입니다.")
@@ -85,15 +86,7 @@ const StationDetailCard = ({
           >
             TMAP으로 보내기
           </Link>
-          <RWebShare
-            data={{
-              text: street,
-            }}
-            sites={["copy"]}
-            onClick={() => console.info("share successful!")}
-          >
-            <Button>테슬라로 경로 전송</Button>
-          </RWebShare>
+          <Button onClick={handleShare}>테슬라로 경로 전송</Button>
         </CardActions>
       </CardContent>
     </Card>
