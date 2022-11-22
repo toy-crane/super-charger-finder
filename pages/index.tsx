@@ -80,6 +80,12 @@ export default function Home() {
         <meta property="og:image" content="/meta/og-image.jpeg" />
         <meta property="og:image:width" content="800" />
         <meta property="og:image:height" content="400" />
+        <meta property="og:title" content="슈차 파인더" />
+        <meta property="og:site_name" content="슈차 파인더" />
+        <meta
+          property="og:url"
+          content="https://super-charger-finder.vercel.app/"
+        />
       </Head>
       <Layout.Header>
         <Container
