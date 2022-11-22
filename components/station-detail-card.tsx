@@ -88,7 +88,6 @@ const StationDetailCard = ({
           <RWebShare
             data={{
               text: street,
-              title: street,
             }}
             sites={["copy"]}
             onClick={() => console.info("share successful!")}
