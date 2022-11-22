@@ -77,6 +77,9 @@ export default function Home() {
           content="/favicon/browserconfig.xml"
         />
         <meta name="theme-color" content="#ffffff" />
+        <meta property="og:image" content="/meta/og-image.jpeg" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="400" />
       </Head>
       <Layout.Header>
         <Container
