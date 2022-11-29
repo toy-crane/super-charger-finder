@@ -1,31 +1,17 @@
 import React, { useState } from "react"
 
-import {
-  Box,
-  Container,
-  Divider,
-  Drawer,
-  IconButton,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Stack,
-} from "@mui/material"
-import FeedbackIcon from "@mui/icons-material/Feedback"
+import { Container, IconButton, Stack } from "@mui/material"
 import ChargingStationCard from "../components/card"
 import SearchInput from "../components/search-input"
 import { superChargerInfo } from "../data"
 import StationModal from "../components/station-modal"
 import Head from "next/head"
-import Image from "next/image"
 import { searchedStationIdState } from "../atoms"
 import { useRecoilValue } from "recoil"
 import Layout from "../components/layout"
 import { useRouter } from "next/router"
 import MenuIcon from "@mui/icons-material/Menu"
-import { ShareLocation } from "@mui/icons-material"
+import Menu from "../components/menu"
 
 export default function Home() {
   const [selectedStationId, setSelectedStationId] = useState<number>()
@@ -35,8 +21,6 @@ export default function Home() {
   const handleDraweropen = () => setOpenDrawer((openDrawer) => !openDrawer)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
-
-  const { push } = useRouter()
 
   const handleSelectedStation = (id: number | undefined) => {
     setSelectedStationId(id)
@@ -148,41 +132,7 @@ export default function Home() {
         onClose={handleClose}
         selectedStation={selectedStation}
       />
-      <Drawer anchor={"left"} open={openDrawer} onClose={handleDraweropen}>
-        <Box
-          width={200}
-          p={2}
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            gap: 1,
-          }}
-        >
-          <Box sx={{ justifySelf: "center", alignSelf: "center" }}>
-            <Image
-              src="/logo.png"
-              alt="logo"
-              width={120}
-              height={40}
-              onClick={handleDraweropen}
-              style={{ cursor: "pointer" }}
-            />
-          </Box>
-          <Divider />
-          <List>
-            <ListItem>
-              <ListItemButton>
-                <ListItemText
-                  primary="기능 제안하기"
-                  onClick={() =>
-                    (document.location = "https://forms.gle/zPZq9HV2UcLoLYyM9")
-                  }
-                />
-              </ListItemButton>
-            </ListItem>
-          </List>
-        </Box>
-      </Drawer>
+      <Menu onClick={handleDraweropen} openDrawer={openDrawer} />
     </>
   )
 }
