@@ -1,7 +1,7 @@
-import { Autocomplete, Stack, TextField } from "@mui/material"
-import { superChargerInfo } from "../data"
+import { Autocomplete, TextField } from "@mui/material"
 import { useRecoilState } from "recoil"
 import { searchedStationIdState } from "../atoms"
+import superChargerInfo from "../data"
 
 const SearchInput = () => {
   const [_, setSearchedStationId] = useRecoilState(searchedStationIdState)
@@ -16,7 +16,9 @@ const SearchInput = () => {
       options={superChargerInfo}
       sx={{ flex: 1 }}
       noOptionsText="조건에 맞는 슈퍼차저가 존재하지 않습니다."
-      getOptionLabel={(option) => `${option.region} | ${option.name}`}
+      getOptionLabel={(option) =>
+        `${option.address.shortState}-${option.address.city} | ${option.commonName}`
+      }
       onChange={(_, value) =>
         value ? handleInputChage(value.id) : handleInputChage(undefined)
       }
