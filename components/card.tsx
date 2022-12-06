@@ -42,7 +42,11 @@ const ChargingStationCard = ({
         </Typography>
         <Typography variant="subtitle1" sx={{ mb: 0.5, fontWeight: "bold" }}>
           무료 회차:{" "}
-          {freeParkingChargeTime ? `${freeParkingChargeTime}분` : "없음"}
+          {freeParkingChargeTime
+            ? freeParkingChargeTime === "free"
+              ? "무료"
+              : `${freeParkingChargeTime}분`
+            : "없음"}
         </Typography>
         <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
           <Typography variant="body2">슈퍼 차저: {stallCount}기</Typography>

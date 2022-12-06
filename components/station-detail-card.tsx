@@ -74,7 +74,11 @@ const StationDetailCard = ({
           <Typography variant="subtitle1">주차요금</Typography>
           <Typography variant="body1" sx={{ fontWeight: "bold" }}>
             무료 회차 시간 -{" "}
-            {freeParkingChargeTime ? `${freeParkingChargeTime}분` : "없음"}
+            {freeParkingChargeTime
+              ? freeParkingChargeTime === "free"
+                ? "무료"
+                : `${freeParkingChargeTime}분`
+              : "없음"}
           </Typography>
           <Typography
             variant="body2"
