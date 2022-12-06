@@ -2,9 +2,9 @@ export interface SuperCharger {
   id: number
   region?: "서울" | "경기" | "강원" | "충청" | "경상" | "전라" | "제주"
   name: string
-  freeParkingChargeTime?: number
-  parkingFee?: string
-  parkingFeeDiscount?: string
+  freeParkingChargeTime: number | "free"
+  parkingFee: string | null
+  parkingFeeDiscount: string | null
   chargingSpeed?: "120W" | "250W"
   DcCount?: number
   locationId: string
@@ -21,7 +21,7 @@ export interface SuperCharger {
   address: {
     streetName: string
     city: string
-    locationDetail?: string
+    locationDetail: string
     state: string | null
     shortState: string
     zip?: string | null
@@ -69,9 +69,11 @@ const superChargerInfo: SuperCharger[] = [
     battery: false,
     statusDays: 0,
     urlDiscuss: false,
-    KRName: "서울 – 강서 수퍼차저",
+    KRName: "서울–강서 수퍼차저",
     commonName: "롯데몰 김포공항점",
-    parkingFee: "초과 30분당 3,000원",
+    parkingFee: "초과 30분당 1,000원",
+    freeParkingChargeTime: 30,
+    parkingFeeDiscount: "1만원 구매 시, 1시간 무료",
   },
   {
     id: 2,
@@ -481,7 +483,7 @@ const superChargerInfo: SuperCharger[] = [
     commonName: "서초쌍용플래티넘",
     freeParkingChargeTime: 5,
     parkingFee: "기본 5,000원 \n 50분 초과 시, 10분당 1,000원",
-    parkingFeeDiscount: undefined,
+    parkingFeeDiscount: null,
     DcCount: 8,
   },
   {
@@ -518,7 +520,7 @@ const superChargerInfo: SuperCharger[] = [
     commonName: "신사스퀘어",
     freeParkingChargeTime: 30,
     parkingFee: "30분당 3,000원 추가 10분당 1,000원",
-    parkingFeeDiscount: undefined,
+    parkingFeeDiscount: null,
     DcCount: undefined,
   },
   {
@@ -592,7 +594,7 @@ const superChargerInfo: SuperCharger[] = [
     commonName: "CCMM빌딩",
     freeParkingChargeTime: 10,
     parkingFee: "10분당 1,000원",
-    parkingFeeDiscount: undefined,
+    parkingFeeDiscount: null,
     DcCount: undefined,
   },
   {
@@ -703,7 +705,7 @@ const superChargerInfo: SuperCharger[] = [
     commonName: "에피소드 수유 838",
     freeParkingChargeTime: 10,
     parkingFee: "15분당 1,000원",
-    parkingFeeDiscount: undefined,
+    parkingFeeDiscount: null,
     DcCount: 2,
   },
   {
@@ -870,6 +872,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "경기도 하남시 미사대로 750",
+      locationDetail: "지상 4층 12C",
     },
     gps: {
       latitude: 37.545551,
@@ -886,6 +889,9 @@ const superChargerInfo: SuperCharger[] = [
     urlDiscuss: false,
     KRName: "하남 수퍼차저",
     commonName: "스타필드 하남",
+    freeParkingChargeTime: "free",
+    parkingFeeDiscount: null,
+    parkingFee: null,
   },
   {
     id: 24,
@@ -902,6 +908,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "경기도 가평군 설악면 미사리로 3",
+      locationDetail: "지상",
     },
     gps: {
       latitude: 37.686451,
@@ -917,7 +924,10 @@ const superChargerInfo: SuperCharger[] = [
     statusDays: 0,
     urlDiscuss: false,
     KRName: "가평 수퍼차저",
-    commonName: "",
+    commonName: "설악 IC 가평",
+    freeParkingChargeTime: 0,
+    parkingFee: "30분 2,000원 추가 10분당 1,000원",
+    parkingFeeDiscount: null,
   },
   {
     id: 25,
@@ -948,8 +958,11 @@ const superChargerInfo: SuperCharger[] = [
     battery: false,
     statusDays: 0,
     urlDiscuss: false,
-    KRName: "성남 – 분당 수퍼차저",
-    commonName: "CGV스퀘어",
+    KRName: "성남–분당 수퍼차저",
+    commonName: "CGV스퀘어 오리점",
+    freeParkingChargeTime: 60,
+    parkingFee: null,
+    parkingFeeDiscount: "홈플러스 이용 시 2시간 무료 \n CGV 이용 시 3시간 무료",
   },
   {
     id: 26,
@@ -966,6 +979,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "경기도 수원시 권선구 세화로 134",
+      locationDetail: "지하 2층 L1",
     },
     gps: {
       latitude: 37.264011,
@@ -981,7 +995,10 @@ const superChargerInfo: SuperCharger[] = [
     statusDays: 0,
     urlDiscuss: false,
     KRName: "수원 수퍼차저",
-    commonName: "롯데몰수원점",
+    commonName: "롯데몰 수원점",
+    freeParkingChargeTime: 30,
+    parkingFee: "10분당 500원",
+    parkingFeeDiscount: "1만원 구매 시, 1시간 무료",
   },
   {
     id: 27,
@@ -998,7 +1015,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "경기도 성남시 분당구 판교로319번길 13",
-      locationDetail: undefined,
+      locationDetail: "지상 4층",
     },
     gps: {
       latitude: 37.403642,
@@ -1014,11 +1031,12 @@ const superChargerInfo: SuperCharger[] = [
     statusDays: 0,
     urlDiscuss: true,
     KRName: "성남 판교 수퍼차저",
-    commonName: "디테라스",
-    freeParkingChargeTime: undefined,
-    parkingFee: undefined,
-    parkingFeeDiscount: undefined,
-    DcCount: undefined,
+    commonName: "판교 디테라스",
+    parkingFee: "20분당 1,000원",
+    parkingFeeDiscount:
+      "평일 업장 이용 시, 1~2시간 무료 \n 휴일 업장 이용 시 무료 ",
+    DcCount: 1,
+    freeParkingChargeTime: 0,
   },
   {
     id: 28,
@@ -1035,6 +1053,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "경기도 평택시 청원로 1409",
+      locationDetail: "지상",
     },
     gps: {
       latitude: 37.053481,
@@ -1050,7 +1069,10 @@ const superChargerInfo: SuperCharger[] = [
     statusDays: 0,
     urlDiscuss: true,
     KRName: "평택 수퍼차저",
-    commonName: "블루에너지",
+    commonName: "송탄 블루에너지 충전소",
+    freeParkingChargeTime: "free",
+    parkingFee: null,
+    parkingFeeDiscount: null,
   },
   {
     id: 29,
@@ -1067,6 +1089,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "경기도 고양시 일산동구 태극로 20",
+      locationDetail: "지하 3층",
     },
     gps: {
       latitude: 37.661945,
@@ -1083,6 +1106,10 @@ const superChargerInfo: SuperCharger[] = [
     urlDiscuss: true,
     KRName: "고양 수퍼차저",
     commonName: "소노캄 고양",
+    freeParkingChargeTime: 10,
+    DcCount: 2,
+    parkingFee: "30분 1,000원이후 15분마다 1,000원",
+    parkingFeeDiscount: "1층 스타벅스 이용 시 1시간 무료",
   },
   {
     id: 30,
@@ -1099,6 +1126,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "경기도 김포시 김포한강4로 487",
+      locationDetail: "지하 1층",
     },
     gps: {
       latitude: 37.645455,
@@ -1115,6 +1143,10 @@ const superChargerInfo: SuperCharger[] = [
     urlDiscuss: true,
     KRName: "김포 수퍼차저",
     commonName: "카림애비뉴 김포",
+    DcCount: 3,
+    parkingFee: "최초 30분 1,000원 추가 30분당 500원",
+    parkingFeeDiscount: "상가 이용 시 1시간 무료",
+    freeParkingChargeTime: 0,
   },
   {
     id: 31,
@@ -1131,6 +1163,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "경기도 고양시 일산동구 장항로 31",
+      locationDetail: "지상",
     },
     gps: {
       latitude: 37.629688,
@@ -1147,6 +1180,9 @@ const superChargerInfo: SuperCharger[] = [
     urlDiscuss: false,
     KRName: "일산 수퍼차저",
     commonName: "N2WASH 일산전기차충전소",
+    freeParkingChargeTime: 5,
+    parkingFeeDiscount: "커피/세차 이용 시 무료",
+    parkingFee: "10분 600원",
   },
   {
     id: 32,
@@ -1163,6 +1199,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "경기도 용인시 기흥구 신고매로 124",
+      locationDetail: "지하 3층 A5",
     },
     gps: {
       latitude: 37.225032,
@@ -1177,8 +1214,12 @@ const superChargerInfo: SuperCharger[] = [
     battery: false,
     statusDays: 0,
     urlDiscuss: false,
-    KRName: "용인 - 기흥 수퍼차저",
+    KRName: "용인-기흥 수퍼차저",
     commonName: "롯데프리미엄아울렛 기흥점",
+    freeParkingChargeTime: "free",
+    DcCount: 6,
+    parkingFee: null,
+    parkingFeeDiscount: null,
   },
   {
     id: 33,
@@ -1195,6 +1236,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "경기도 여주시 명품로 360",
+      locationDetail: "지상 A",
     },
     gps: {
       latitude: 37.240451,
@@ -1210,7 +1252,11 @@ const superChargerInfo: SuperCharger[] = [
     statusDays: 0,
     urlDiscuss: false,
     KRName: "여주 수퍼차저",
-    commonName: "여주프리미엄아울렛",
+    commonName: "여주 신세계 프리미엄 아울렛",
+    DcCount: 12,
+    freeParkingChargeTime: "free",
+    parkingFee: null,
+    parkingFeeDiscount: null,
   },
   {
     id: 34,
@@ -1227,6 +1273,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "경기도 화성시 향남읍 서해로 806",
+      locationDetail: "지상",
     },
     gps: {
       latitude: 37.13485,
@@ -1242,7 +1289,10 @@ const superChargerInfo: SuperCharger[] = [
     statusDays: 0,
     urlDiscuss: false,
     KRName: "화성 수퍼차저",
-    commonName: "대야 에너지",
+    commonName: "화성 GS 주유소",
+    freeParkingChargeTime: "free",
+    parkingFee: null,
+    parkingFeeDiscount: null,
   },
   {
     id: 35,
@@ -1259,6 +1309,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "경기도 안성시 안성맞춤대로 833",
+      locationDetail: "지상 1층",
     },
     gps: {
       latitude: 36.988973,
@@ -1274,7 +1325,10 @@ const superChargerInfo: SuperCharger[] = [
     statusDays: 0,
     urlDiscuss: true,
     KRName: "안성 수퍼차저",
-    commonName: "안성축산농협",
+    commonName: "안성 축협",
+    freeParkingChargeTime: "free",
+    parkingFee: null,
+    parkingFeeDiscount: null,
   },
   {
     id: 36,
@@ -1291,6 +1345,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "경기도 화성시 동탄역로 160",
+      locationDetail: "지하 4층 E6",
     },
     gps: {
       latitude: 37.191169,
@@ -1307,6 +1362,10 @@ const superChargerInfo: SuperCharger[] = [
     urlDiscuss: false,
     KRName: "동탄 수퍼차저",
     commonName: "롯데백화점 동탄점",
+    freeParkingChargeTime: 30,
+    parkingFee: "10분당 1,000원",
+    parkingFeeDiscount: "1/3/5만원 1/2/3시간 무료",
+    DcCount: 3,
   },
   {
     id: 37,
@@ -1323,6 +1382,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "경기도 의왕시 학의동 1039",
+      locationDetail: "지하 1층",
     },
     gps: {
       latitude: 37.375635,
@@ -1339,6 +1399,10 @@ const superChargerInfo: SuperCharger[] = [
     urlDiscuss: false,
     KRName: "의왕 수퍼차저",
     commonName: "롯데프리미엄아울렛 타임빌라스",
+    DcCount: 3,
+    freeParkingChargeTime: 30,
+    parkingFee: "10분당 1,000원",
+    parkingFeeDiscount: "1/3/5만원 1/2/3시간 무료",
   },
   {
     id: 38,
@@ -1355,6 +1419,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "경기도 광주시 경충대로 1967",
+      locationDetail: "지상",
     },
     gps: {
       latitude: 37.403372,
@@ -1371,6 +1436,9 @@ const superChargerInfo: SuperCharger[] = [
     urlDiscuss: true,
     KRName: "경기 - 광주 수퍼차저",
     commonName: "나인블럭 중대동점",
+    freeParkingChargeTime: "free",
+    parkingFee: null,
+    parkingFeeDiscount: null,
   },
   {
     id: 39,
@@ -1387,6 +1455,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "경기도 수원시 영통구 도청로 10",
+      locationDetail: "지하 4층",
     },
     gps: {
       latitude: 37.28668,
@@ -1403,6 +1472,10 @@ const superChargerInfo: SuperCharger[] = [
     urlDiscuss: true,
     KRName: "광교 중앙 수퍼차저",
     commonName: "롯데아울렛 광교점",
+    freeParkingChargeTime: 39,
+    DcCount: 3,
+    parkingFee: null,
+    parkingFeeDiscount: null,
   },
   {
     id: 40,
@@ -1419,6 +1492,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "경기도 성남시 분당구 백현동 534",
+      locationDetail: "지하 2층",
     },
     gps: {
       latitude: 37.395597,
@@ -1435,6 +1509,10 @@ const superChargerInfo: SuperCharger[] = [
     urlDiscuss: true,
     KRName: "판교-백현A 수퍼차저",
     commonName: "판교 테크원타워",
+    freeParkingChargeTime: 20,
+    parkingFee: "1일 13,000원",
+    parkingFeeDiscount: null,
+    DcCount: 21,
   },
   {
     id: 41,
@@ -1451,6 +1529,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "경기도 광명시 양지로 7",
+      locationDetail: "B5F",
     },
     gps: {
       latitude: 37.41917204,
@@ -1466,7 +1545,11 @@ const superChargerInfo: SuperCharger[] = [
     statusDays: 0,
     urlDiscuss: true,
     KRName: "광명 수퍼차저",
-    commonName: "U플래닛",
+    commonName: "유플래닛",
+    freeParkingChargeTime: 30,
+    DcCount: 7,
+    parkingFee: "20분당 2,000원",
+    parkingFeeDiscount: "2/3/5/10만원 2/3/4/5 무료 주차",
   },
   {
     id: 42,
@@ -1483,6 +1566,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "경기도 수원시 영통구 하동 965-7",
+      locationDetail: "2층",
     },
     gps: {
       latitude: 37.293423,
@@ -1499,6 +1583,10 @@ const superChargerInfo: SuperCharger[] = [
     urlDiscuss: true,
     KRName: "광교 수퍼차저",
     commonName: "광교 법원 주차장",
+    freeParkingChargeTime: 0,
+    parkingFee: "30분 2,000원 이후 10분당 1,000원",
+    parkingFeeDiscount: null,
+    DcCount: 1,
   },
   {
     id: 43,
@@ -1514,7 +1602,8 @@ const superChargerInfo: SuperCharger[] = [
       country: "South Korea",
       regionId: 102,
       region: "Asia Pacific",
-      streetName: "경기도 안양시 동안구 관평로170번길 33 평촌주공공이",
+      streetName: "경기도 안양시 동안구 부림동 관평로170번길 33",
+      locationDetail: "7층",
     },
     gps: {
       latitude: 37.39301,
@@ -1531,6 +1620,10 @@ const superChargerInfo: SuperCharger[] = [
     urlDiscuss: true,
     KRName: "안양 수퍼차저",
     commonName: "CGV 평촌",
+    freeParkingChargeTime: 10,
+    DcCount: 3,
+    parkingFee: "20분당 1,000원",
+    parkingFeeDiscount: null,
   },
   {
     id: 44,
@@ -1547,6 +1640,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "경기도 구리시 경춘북로 230",
+      locationDetail: "6층 옥상",
     },
     gps: {
       latitude: 37.6333,
@@ -1563,6 +1657,9 @@ const superChargerInfo: SuperCharger[] = [
     urlDiscuss: true,
     KRName: "모다아울렛-구리 수퍼차저",
     commonName: "모다아울렛 구리남양주점",
+    freeParkingChargeTime: 0,
+    parkingFee: null,
+    parkingFeeDiscount: null,
   },
   {
     id: 45,
@@ -1579,6 +1676,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "경기 고양시 덕양구 권율대로 449 ",
+      locationDetail: "지상 1층",
     },
     gps: {
       latitude: 37.6327,
@@ -1594,7 +1692,10 @@ const superChargerInfo: SuperCharger[] = [
     statusDays: 0,
     urlDiscuss: true,
     KRName: "고양 도내동 수퍼차저",
-    commonName: "커피명당",
+    commonName: "북고양 커피명당",
+    freeParkingChargeTime: "free",
+    parkingFee: "없음",
+    parkingFeeDiscount: null,
   },
   {
     id: 46,
@@ -1611,6 +1712,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "경기도 부천시 길주로 300",
+      locationDetail: "지하 4층",
     },
     gps: {
       latitude: 37.5026,
@@ -1627,6 +1729,9 @@ const superChargerInfo: SuperCharger[] = [
     urlDiscuss: true,
     KRName: "부천 수퍼차저",
     commonName: "롯데백화점 중동점",
+    freeParkingChargeTime: 30,
+    parkingFee: null,
+    parkingFeeDiscount: null,
   },
   {
     id: 47,
@@ -1643,6 +1748,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "인천광역시 연수구 송도과학로16번길 33-3",
+      locationDetail: "D동 지하 2층",
     },
     gps: {
       latitude: 37.378678,
@@ -1657,8 +1763,12 @@ const superChargerInfo: SuperCharger[] = [
     battery: false,
     statusDays: 0,
     urlDiscuss: false,
-    KRName: "연수 – 송도 수퍼차저",
-    commonName: "트리플스트리트",
+    KRName: "연수–송도 수퍼차저",
+    commonName: "송도 트리플스트리트",
+    freeParkingChargeTime: "free",
+    parkingFee: null,
+    parkingFeeDiscount: null,
+    DcCount: 5,
   },
   {
     id: 48,
@@ -1675,6 +1785,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "인천광역시 서구 청라루비로 76",
+      locationDetail: "지하 2층 하",
     },
     gps: {
       latitude: 37.532636,
@@ -1691,6 +1802,10 @@ const superChargerInfo: SuperCharger[] = [
     urlDiscuss: true,
     KRName: "청라 수퍼차저",
     commonName: "청라 스퀘어세븐",
+    freeParkingChargeTime: "free",
+    DcCount: 4,
+    parkingFee: null,
+    parkingFeeDiscount: null,
   },
   {
     id: 49,
@@ -1707,6 +1822,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "인천광역시 미추홀구 숙골로 88번길 12",
+      locationDetail: "상가 B4",
     },
     gps: {
       latitude: 37.470798,
@@ -1722,7 +1838,10 @@ const superChargerInfo: SuperCharger[] = [
     statusDays: 0,
     urlDiscuss: true,
     KRName: "미추홀 수퍼차저",
-    commonName: "엘리웨이 인천",
+    commonName: "미추홀 엘리웨이",
+    freeParkingChargeTime: 30,
+    parkingFee: "추가 10분당 1,000원",
+    parkingFeeDiscount: "업장 이용 시, 1/2/3만원 -> 1/2/3시간 무료",
   },
   {
     id: 50,
@@ -1739,6 +1858,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "인천광역시 연수구 아암대로 825-25",
+      locationDetail: "지상",
     },
     gps: {
       latitude: 37.3959939,
@@ -1753,8 +1873,11 @@ const superChargerInfo: SuperCharger[] = [
     battery: false,
     statusDays: 0,
     urlDiscuss: true,
-    KRName: "연수 - 동춘 수퍼차저",
-    commonName: "더 스탈릿",
+    KRName: "연수-동춘 수퍼차저",
+    commonName: "연수 더 스탈릿",
+    freeParkingChargeTime: 5,
+    parkingFee: "1시간 1,000원",
+    parkingFeeDiscount: null,
   },
   {
     id: 51,
