@@ -3,15 +3,14 @@ import React, { useState } from "react"
 import { Container, IconButton, Stack } from "@mui/material"
 import ChargingStationCard from "../components/card"
 import SearchInput from "../components/search-input"
-import { superChargerInfo } from "../data"
 import StationModal from "../components/station-modal"
 import Head from "next/head"
 import { searchedStationIdState } from "../atoms"
 import { useRecoilValue } from "recoil"
 import Layout from "../components/layout"
-import { useRouter } from "next/router"
 import MenuIcon from "@mui/icons-material/Menu"
 import Menu from "../components/menu"
+import superChargerInfo from "../data"
 
 export default function Home() {
   const [selectedStationId, setSelectedStationId] = useState<number>()

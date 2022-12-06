@@ -18,7 +18,7 @@ const isShareSupported = () => navigator.share ?? false
 
 const StationDetailCard = ({
   name,
-  address: { street, locationDetail },
+  address: { streetName, locationDetail, shortState, city },
   stallCount,
   DcCount,
   chargingSpeed,
@@ -26,12 +26,14 @@ const StationDetailCard = ({
   parkingFee,
   parkingFeeDiscount,
   gps: { latitude, longitude },
+  commonName,
+  KRName,
 }: StationDetailCardProps) => {
   const handleShare = () => {
     if (isShareSupported()) {
       navigator.share({
-        title: street,
-        text: street,
+        title: streetName,
+        text: streetName,
       })
     } else {
       alert("공유하기가 지원되지 않는 환경 입니다.")
@@ -47,9 +49,15 @@ const StationDetailCard = ({
           label={chargingSpeed === "250W" ? "V3 | 250W" : "V2 | 120W"}
           sx={{ mb: 1 }}
         ></Chip>
-        <Typography variant="h5">{name}</Typography>
+        <Typography variant="h5">
+          {shortState} - {city} | {commonName}
+        </Typography>
+        <Typography variant="subtitle1">{KRName}</Typography>
+        <Typography variant="body1" color="text.secondary">
+          {streetName}
+        </Typography>
         <Typography variant="body1" color="text.secondary" mb={2}>
-          {street} | {locationDetail}
+          {locationDetail}
         </Typography>
         <Box sx={{ mb: 3 }}>
           <Typography variant="subtitle1">충전</Typography>

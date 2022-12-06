@@ -5,9 +5,9 @@ import {
   DialogActions,
   IconButton,
 } from "@mui/material"
-import { SuperCharger } from "../data"
 import StationDetailCard from "./station-detail-card"
 import CloseIcon from "@mui/icons-material/Close"
+import { SuperCharger } from "../data"
 
 interface StationModalProps {
   open: boolean

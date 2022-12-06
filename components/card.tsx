@@ -6,7 +6,6 @@ import {
   Typography,
   useTheme,
 } from "@mui/material"
-import { useRouter } from "next/router"
 import { SuperCharger } from "../data"
 
 interface ChargingStationCardProps extends SuperCharger {
@@ -14,13 +13,13 @@ interface ChargingStationCardProps extends SuperCharger {
 }
 
 const ChargingStationCard = ({
-  region,
   name,
-  address: { locationDetail },
+  address: { locationDetail, shortState, city, streetName },
   freeParkingChargeTime,
   chargingSpeed,
   stallCount,
   DcCount,
+  commonName,
   onClick,
   id,
 }: ChargingStationCardProps) => {
@@ -39,12 +38,9 @@ const ChargingStationCard = ({
           sx={{ mb: 1 }}
         ></Chip>
         <Typography variant="h5" component="div">
-          {region} | {name}
+          {shortState} - {city} | {commonName}
         </Typography>
-        <Typography color="text.secondary" sx={{ mb: 1 }}>
-          {locationDetail}
-        </Typography>
-        <Typography variant="body1" sx={{ mb: 0.5 }}>
+        <Typography variant="subtitle1" sx={{ mb: 0.5, fontWeight: "bold" }}>
           무료 회차:{" "}
           {freeParkingChargeTime ? `${freeParkingChargeTime}분` : "없음"}
         </Typography>
