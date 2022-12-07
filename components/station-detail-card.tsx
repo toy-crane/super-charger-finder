@@ -1,20 +1,21 @@
 import {
   Box,
   Button,
-  ButtonProps,
   Card,
   CardActions,
   CardContent,
   Chip,
-  Link,
-  styled,
   Typography,
 } from "@mui/material"
 import { SuperCharger } from "../data"
+import EditIcon from "@mui/icons-material/Edit"
+import Link from "next/link"
 
 interface StationDetailCardProps extends SuperCharger {}
 
 const isShareSupported = () => navigator.share ?? false
+
+const MODIFY_SUCHA_FORM_URL = "https://forms.gle/QPjyUhmLpTw2Ux3j9"
 
 const StationDetailCard = ({
   name,
@@ -49,9 +50,14 @@ const StationDetailCard = ({
           label={chargingSpeed === "250W" ? "V3 | 250W" : "V2 | 120W"}
           sx={{ mb: 1 }}
         ></Chip>
-        <Typography variant="h5">
-          {shortState} - {city} | {commonName}
-        </Typography>
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+          <Typography variant="h5">
+            {shortState} - {city} | {commonName}
+          </Typography>
+          <Link href={MODIFY_SUCHA_FORM_URL}>
+            <EditIcon cursor="pointer" fontSize="small" />
+          </Link>
+        </Box>
         <Typography variant="subtitle1">{KRName}</Typography>
         <Typography variant="body1" color="text.secondary">
           {streetName}
