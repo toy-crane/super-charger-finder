@@ -334,8 +334,7 @@ const superChargerInfo: SuperCharger[] = [
     urlDiscuss: false,
     KRName: "서울 - 압구정 수퍼차저",
     commonName: "안다즈 서울 강남",
-    parkingFeeDiscount: undefined,
-    DcCount: undefined,
+    parkingFeeDiscount: null,
   },
   {
     id: 9,
@@ -944,6 +943,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "경기도 성남시 분당구 탄천상로151번길 20",
+      locationDetail: "지하 4층 E6",
     },
     gps: {
       latitude: 37.340546,
@@ -1894,6 +1894,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "강원도 평창군 봉평면 태기로 174",
+      locationDetail: "지상",
     },
     gps: {
       latitude: 37.586685,
@@ -1909,7 +1910,11 @@ const superChargerInfo: SuperCharger[] = [
     statusDays: 0,
     urlDiscuss: true,
     KRName: "평창 수퍼차저",
-    commonName: "",
+    commonName: "평창 휘닉스파크",
+    freeParkingChargeTime: "free",
+    parkingFee: null,
+    parkingFeeDiscount: null,
+    DcCount: 10,
   },
   {
     id: 52,
@@ -1926,6 +1931,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "강원도 원주시 지정면 오크밸리2길 58",
+      locationDetail: "지상",
     },
     gps: {
       latitude: 37.435072,
@@ -1942,6 +1948,9 @@ const superChargerInfo: SuperCharger[] = [
     urlDiscuss: false,
     KRName: "원주 수퍼차저",
     commonName: "오크밸리 리조트",
+    parkingFee: null,
+    parkingFeeDiscount: null,
+    freeParkingChargeTime: "free",
   },
   {
     id: 53,
@@ -1958,6 +1967,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "강원도 속초시 대포항길 186",
+      locationDetail: "지하 3층",
     },
     gps: {
       latitude: 38.180856,
@@ -1973,7 +1983,10 @@ const superChargerInfo: SuperCharger[] = [
     statusDays: 0,
     urlDiscuss: false,
     KRName: "속초 수퍼차저",
-    commonName: "롯데리조트속초",
+    commonName: "롯데 리조트 속초",
+    freeParkingChargeTime: "free",
+    parkingFee: null,
+    parkingFeeDiscount: null,
   },
   {
     id: 54,
@@ -1990,6 +2003,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "강원도 강릉시 해안로 536",
+      locationDetail: "지하 1층",
     },
     gps: {
       latitude: 37.80534,
@@ -2005,7 +2019,10 @@ const superChargerInfo: SuperCharger[] = [
     statusDays: 0,
     urlDiscuss: false,
     KRName: "강릉 수퍼차저",
-    commonName: "라카이샌드파인",
+    commonName: "라카이샌드 파인 리조트",
+    freeParkingChargeTime: "free",
+    parkingFee: null,
+    parkingFeeDiscount: null,
   },
   {
     id: 55,
@@ -2022,6 +2039,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "강원도 양양군 손양면 공항로 230",
+      locationDetail: "지상",
     },
     gps: {
       latitude: 38.054626,
@@ -2038,6 +2056,10 @@ const superChargerInfo: SuperCharger[] = [
     urlDiscuss: true,
     KRName: "양양 수퍼차저",
     commonName: "설해원 리조트",
+    freeParkingChargeTime: "free",
+    parkingFee: null,
+    parkingFeeDiscount: null,
+    DcCount: 5,
   },
   {
     id: 56,
@@ -2054,6 +2076,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "강원도 춘천시 후석로 120",
+      locationDetail: "2층",
     },
     gps: {
       latitude: 37.863274,
@@ -2069,7 +2092,11 @@ const superChargerInfo: SuperCharger[] = [
     statusDays: 0,
     urlDiscuss: true,
     KRName: "춘천 수퍼차저",
-    commonName: "ENTA2022",
+    commonName: "춘천 NH타운",
+    freeParkingChargeTime: 20,
+    parkingFee: "정보 없음",
+    parkingFeeDiscount: "정보 없음",
+    DcCount: 6,
   },
   {
     id: 57,
@@ -2086,6 +2113,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "강원도 인제군 기린면 상하답로 130",
+      locationDetail: "지상",
     },
     gps: {
       latitude: 38.0053,
@@ -2102,6 +2130,9 @@ const superChargerInfo: SuperCharger[] = [
     urlDiscuss: true,
     KRName: "인제 수퍼차저",
     commonName: "인제스피디움",
+    freeParkingChargeTime: 20,
+    parkingFee: "정보 없음",
+    parkingFeeDiscount: null,
   },
   {
     id: 58,
