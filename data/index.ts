@@ -2738,6 +2738,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "대구광역시 북구 엑스코로 10",
+      locationDetail: "신관 지하 1층",
     },
     gps: {
       latitude: 35.907022,
@@ -2753,7 +2754,10 @@ const superChargerInfo: SuperCharger[] = [
     statusDays: 0,
     urlDiscuss: false,
     KRName: "대구 수퍼차저",
-    commonName: "엑스코",
+    commonName: "대구 엑스코",
+    freeParkingChargeTime: 60,
+    parkingFee: "10분당 300원",
+    parkingFeeDiscount: null,
   },
   {
     id: 76,
@@ -2770,6 +2774,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "대구광역시 동구 팔공로49길 16",
+      locationDetail: "지상 1층",
     },
     gps: {
       latitude: 35.9229,
@@ -2786,6 +2791,10 @@ const superChargerInfo: SuperCharger[] = [
     urlDiscuss: false,
     KRName: "대구 - 이시아폴리스 수퍼차저",
     commonName: "롯데아울렛 이시아폴리스점",
+    freeParkingChargeTime: 30,
+    parkingFeeDiscount:
+      "1만원 구매 시 1시간 무료, 식당가/F&B 사용 시 2시간 무료",
+    parkingFee: "10분당 500원",
   },
   {
     id: 77,
@@ -2802,6 +2811,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "대구광역시 수성구 수성못6길 18",
+      locationDetail: "지상",
     },
     gps: {
       latitude: 35.82726,
@@ -2817,7 +2827,11 @@ const superChargerInfo: SuperCharger[] = [
     statusDays: 0,
     urlDiscuss: true,
     KRName: "대구-수성 수퍼차저",
-    commonName: "대구수성아트스퀘어",
+    commonName: "대구수성 아트스퀘어",
+    freeParkingChargeTime: 10,
+    parkingFee: "최초 30분 1,000원, 이후 10분당 500원",
+    parkingFeeDiscount: null,
+    DcCount: 3,
   },
   {
     id: 78,
@@ -2834,6 +2848,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "경상북도 상주시 공검면 경상대로 4207",
+      locationDetail: "지상",
     },
     gps: {
       latitude: 36.515931,
@@ -2849,7 +2864,10 @@ const superChargerInfo: SuperCharger[] = [
     statusDays: 0,
     urlDiscuss: false,
     KRName: "상주 수퍼차저",
-    commonName: "연꽃참한우",
+    commonName: "연꽃 참한우",
+    parkingFee: "없음",
+    freeParkingChargeTime: "free",
+    parkingFeeDiscount: null,
   },
   {
     id: 79,
@@ -2866,6 +2884,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "경상북도 청도군 청도읍 새마을로 1376",
+      locationDetail: "지상",
     },
     gps: {
       latitude: 35.654083,
@@ -2881,7 +2900,10 @@ const superChargerInfo: SuperCharger[] = [
     statusDays: 0,
     urlDiscuss: true,
     KRName: "청도 수퍼차저",
-    commonName: "Gam1376 카페",
+    commonName: "청도 이마트24 청도IC점",
+    freeParkingChargeTime: "free",
+    parkingFee: "없음",
+    parkingFeeDiscount: null,
   },
   {
     id: 80,
@@ -2898,6 +2920,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "경상북도 경주시 보문로 338",
+      locationDetail: "외부 지상 주차장",
     },
     gps: {
       latitude: 35.850434,
@@ -2914,6 +2937,9 @@ const superChargerInfo: SuperCharger[] = [
     urlDiscuss: true,
     KRName: "경주 수퍼차저",
     commonName: "라한셀렉트 경주",
+    freeParkingChargeTime: 0,
+    parkingFee: "정보 없음",
+    parkingFeeDiscount: null,
   },
   {
     id: 81,
@@ -2930,6 +2956,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "경상북도 포항시 북구 흥해읍 동해대로 878",
+      locationDetail: "지상",
     },
     gps: {
       latitude: 36.059093,
@@ -2945,7 +2972,11 @@ const superChargerInfo: SuperCharger[] = [
     statusDays: 0,
     urlDiscuss: true,
     KRName: "포항 수퍼차저",
-    commonName: "포항오토파크",
+    commonName: "포항 오토파크",
+    DcCount: 18,
+    freeParkingChargeTime: "free",
+    parkingFee: "없음",
+    parkingFeeDiscount: null,
   },
   {
     id: 82,
