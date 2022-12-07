@@ -3166,6 +3166,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "광주광역시 서구 상무누리로 55",
+      locationDetail: "지하 1층",
     },
     gps: {
       latitude: 35.147921,
@@ -3181,7 +3182,10 @@ const superChargerInfo: SuperCharger[] = [
     statusDays: 0,
     urlDiscuss: false,
     KRName: "광주 수퍼차저",
-    commonName: "홀리데이인 광주호텔",
+    commonName: "홀리데이인 광주",
+    freeParkingChargeTime: 20,
+    parkingFee: "30분당 1,000원",
+    parkingFeeDiscount: null,
   },
   {
     id: 87,
@@ -3198,6 +3202,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "광주광역시 광산구 임방울대로826번길 19-20",
+      locationDetail: "지상 6층",
     },
     gps: {
       latitude: 35.216576,
@@ -3214,6 +3219,9 @@ const superChargerInfo: SuperCharger[] = [
     urlDiscuss: true,
     KRName: "광주 - 첨단 수퍼차저",
     commonName: "보이저 첨단",
+    freeParkingChargeTime: 0,
+    parkingFee: "30분당 2,000원",
+    parkingFeeDiscount: null,
   },
   {
     id: 88,
@@ -3230,6 +3238,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "전라북도 군산시 대야면 번영로 1321",
+      locationDetail: "지상",
     },
     gps: {
       latitude: 35.937086,
@@ -3246,6 +3255,9 @@ const superChargerInfo: SuperCharger[] = [
     urlDiscuss: false,
     KRName: "군산 수퍼차저",
     commonName: "군산 GS 칼텍스 샛별 주유소",
+    freeParkingChargeTime: "free",
+    parkingFee: "없음",
+    parkingFeeDiscount: null,
   },
   {
     id: 89,
@@ -3262,6 +3274,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "전라북도 전주시 완산구 용머리로 45",
+      locationDetail: "지하 2층",
     },
     gps: {
       latitude: 35.80698,
@@ -3277,7 +3290,11 @@ const superChargerInfo: SuperCharger[] = [
     statusDays: 0,
     urlDiscuss: true,
     KRName: "전주 수퍼차저",
-    commonName: "몰오브효자",
+    commonName: "전주 효자몰",
+    freeParkingChargeTime: 0,
+    parkingFee: "정보 없음",
+    parkingFeeDiscount: null,
+    DcCount: 3,
   },
   {
     id: 90,
@@ -3295,6 +3312,7 @@ const superChargerInfo: SuperCharger[] = [
       country: "South Korea",
       regionId: 102,
       region: "Asia Pacific",
+      locationDetail: "지상",
     },
     gps: {
       latitude: 35.63068,
@@ -3309,8 +3327,11 @@ const superChargerInfo: SuperCharger[] = [
     battery: false,
     statusDays: 0,
     urlDiscuss: false,
-    commonName: "",
-    KRName: "",
+    commonName: "임실 슈퍼차저",
+    KRName: "임실 치즈 테마파크",
+    freeParkingChargeTime: "free",
+    parkingFee: "무료",
+    parkingFeeDiscount: null,
   },
   {
     id: 91,
@@ -3327,6 +3348,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "전라남도 여수시 신월로 496-25",
+      locationDetail: "지상",
     },
     gps: {
       latitude: 34.72179,
@@ -3343,6 +3365,9 @@ const superChargerInfo: SuperCharger[] = [
     urlDiscuss: true,
     KRName: "여수 수퍼차저",
     commonName: "여수 히든베이호텔",
+    freeParkingChargeTime: "free",
+    parkingFee: "없음",
+    parkingFeeDiscount: null,
   },
   {
     id: 92,
@@ -3359,6 +3384,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "전라남도 순천시 조례동 640",
+      locationDetail: "지상",
     },
     gps: {
       latitude: 34.96316,
@@ -3375,6 +3401,10 @@ const superChargerInfo: SuperCharger[] = [
     urlDiscuss: false,
     KRName: "순천 수퍼차저",
     commonName: "호수공원 외식타운",
+    freeParkingChargeTime: 0,
+    parkingFee: "10분당 1,000원",
+    parkingFeeDiscount: "업장 이용 시 2시간 무료 \n 23시~9시 무료",
+    DcCount: 4,
   },
   {
     id: 93,
@@ -3391,6 +3421,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "전라남도 광양시 순광로 466",
+      locationDetail: "지상 2층",
     },
     gps: {
       latitude: 34.961728,
@@ -3407,6 +3438,9 @@ const superChargerInfo: SuperCharger[] = [
     urlDiscuss: true,
     KRName: "광양 수퍼차저",
     commonName: "LF스퀘어 광양테라스몰",
+    freeParkingChargeTime: "free",
+    parkingFee: "없음",
+    parkingFeeDiscount: null,
   },
   {
     id: 94,
@@ -3423,6 +3457,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "제주특별자치도 서귀포시 중문관광로72번길 35",
+      locationDetail: "지상",
     },
     gps: {
       latitude: 33.249844,
@@ -3439,6 +3474,9 @@ const superChargerInfo: SuperCharger[] = [
     urlDiscuss: false,
     KRName: "서귀포 수퍼차저",
     commonName: "롯데호텔 제주 호텔주차장",
+    freeParkingChargeTime: 30,
+    parkingFee: "30분당 1,000원",
+    parkingFeeDiscount: null,
   },
   {
     id: 95,
@@ -3455,6 +3493,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "제주특별자치도 제주시 연삼로 136",
+      locationDetail: "지상",
     },
     gps: {
       latitude: 33.492611,
@@ -3470,7 +3509,10 @@ const superChargerInfo: SuperCharger[] = [
     statusDays: 0,
     urlDiscuss: true,
     KRName: "제주 수퍼차저",
-    commonName: "제주 세일즈&딜리버리센터",
+    commonName: "제주 테슬라 스토어",
+    freeParkingChargeTime: "free",
+    parkingFee: "없음",
+    parkingFeeDiscount: null,
   },
 ]
 
