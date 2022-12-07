@@ -2514,6 +2514,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "부산광역시 강서구 대저1동 361-68번지",
+      locationDetail: "지상",
     },
     gps: {
       latitude: 35.219392,
@@ -2529,7 +2530,10 @@ const superChargerInfo: SuperCharger[] = [
     statusDays: 0,
     urlDiscuss: false,
     KRName: "부산 - 강서 수퍼차저",
-    commonName: "쉼터",
+    commonName: "부산 응카",
+    freeParkingChargeTime: "free",
+    parkingFee: "없음",
+    parkingFeeDiscount: null,
   },
   {
     id: 69,
@@ -2546,6 +2550,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "부산광역시 남구 전포대로 133",
+      locationDetail: "지하 3층",
     },
     gps: {
       latitude: 35.148279,
@@ -2562,6 +2567,9 @@ const superChargerInfo: SuperCharger[] = [
     urlDiscuss: false,
     KRName: "부산 - 남구 수퍼차저",
     commonName: "IFC 부산몰",
+    freeParkingChargeTime: 20,
+    parkingFee: "10분당 500원",
+    parkingFeeDiscount: null,
   },
   {
     id: 70,
@@ -2578,6 +2586,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "부산광역시 해운대구 해운대해변로 296",
+      locationDetail: "지상",
     },
     gps: {
       latitude: 35.160676,
@@ -2594,6 +2603,9 @@ const superChargerInfo: SuperCharger[] = [
     urlDiscuss: false,
     KRName: "부산 수퍼차저",
     commonName: "파라다이스호텔 부산",
+    freeParkingChargeTime: 120,
+    parkingFee: "2시간 무료, 10분당 1,000원",
+    parkingFeeDiscount: null,
   },
   {
     id: 71,
@@ -2610,6 +2622,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "부산광역시 연제구 좌수영로 290",
+      locationDetail: "지상",
     },
     gps: {
       latitude: 35.188372,
@@ -2624,8 +2637,11 @@ const superChargerInfo: SuperCharger[] = [
     battery: false,
     statusDays: 0,
     urlDiscuss: true,
-    KRName: "부산 – 연제 수퍼차저",
+    KRName: "부산–연제 수퍼차저",
     commonName: "부산서비스센터",
+    freeParkingChargeTime: "free",
+    parkingFee: "무료",
+    parkingFeeDiscount: null,
   },
   {
     id: 72,
@@ -2642,6 +2658,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "부산광역시 기장군 기장읍 기장해안로 147",
+      locationDetail: "지상",
     },
     gps: {
       latitude: 35.19304,
@@ -2656,8 +2673,12 @@ const superChargerInfo: SuperCharger[] = [
     battery: false,
     statusDays: 0,
     urlDiscuss: true,
-    KRName: "부산 – 기장 수퍼차저",
+    KRName: "부산–기장 수퍼차저",
     commonName: "롯데프리미엄아울렛 동부산점",
+    freeParkingChargeTime: "free",
+    parkingFee: "무료",
+    parkingFeeDiscount: null,
+    DcCount: 6,
   },
   {
     id: 73,
@@ -2674,6 +2695,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "부산 동래구 금강공원로20번길 23",
+      locationDetail: "지상 4층",
     },
     gps: {
       latitude: 35.2197,
@@ -2689,7 +2711,10 @@ const superChargerInfo: SuperCharger[] = [
     statusDays: 0,
     urlDiscuss: true,
     KRName: "동래 호텔농심 수퍼차저",
-    commonName: "호텔농심",
+    commonName: "농심 호텔",
+    freeParkingChargeTime: 0,
+    parkingFee: "10분당 1,000원",
+    parkingFeeDiscount: "1만원 이용 시 1시간 무료",
   },
   {
     id: 74,
@@ -2706,6 +2731,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "부산 해운대구 센텀남대로 59",
+      locationDetail: "지하 5층",
     },
     gps: {
       latitude: 35.1696,
@@ -2722,6 +2748,9 @@ const superChargerInfo: SuperCharger[] = [
     urlDiscuss: true,
     KRName: "센텀시티 수퍼차저",
     commonName: "롯데백화점 센텀시티점",
+    freeParkingChargeTime: 0,
+    parkingFee: "정보 없음",
+    parkingFeeDiscount: null,
   },
   {
     id: 75,
@@ -2993,6 +3022,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "경상남도 함양군 함양읍 고운로 298",
+      locationDetail: "지상",
     },
     gps: {
       latitude: 35.524635,
@@ -3009,6 +3039,9 @@ const superChargerInfo: SuperCharger[] = [
     urlDiscuss: false,
     KRName: "함양 수퍼차저",
     commonName: "타이어프로 함양IC점",
+    freeParkingChargeTime: "free",
+    parkingFee: "없음",
+    parkingFeeDiscount: null,
   },
   {
     id: 83,
@@ -3025,6 +3058,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "경상남도 진주시 동진로 440",
+      locationDetail: "지하 2층",
     },
     gps: {
       latitude: 35.1802627,
@@ -3041,6 +3075,9 @@ const superChargerInfo: SuperCharger[] = [
     urlDiscuss: false,
     KRName: "진주 수퍼차저",
     commonName: "롯데몰 진주점",
+    freeParkingChargeTime: "free",
+    parkingFee: "없음",
+    parkingFeeDiscount: null,
   },
   {
     id: 84,
@@ -3057,6 +3094,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "경상남도 창원시 성산구 중앙대로 100번길 13",
+      locationDetail: "지하 2층",
     },
     gps: {
       latitude: 35.22269,
@@ -3072,7 +3110,10 @@ const superChargerInfo: SuperCharger[] = [
     statusDays: 0,
     urlDiscuss: true,
     KRName: "창원 수퍼차저",
-    commonName: "엠포리움빌딩",
+    commonName: "상남 CGV",
+    freeParkingChargeTime: 10,
+    parkingFee: "최초 30분 1,500원 이후 10분당 500원",
+    parkingFeeDiscount: "CGV 이용 시 3시간 무료",
   },
   {
     id: 85,
@@ -3089,6 +3130,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "경상남도 하동군 진교면 강변길 13-1",
+      locationDetail: "지상",
     },
     gps: {
       latitude: 35.03,
@@ -3105,6 +3147,9 @@ const superChargerInfo: SuperCharger[] = [
     urlDiscuss: true,
     KRName: "하동 수퍼차저",
     commonName: "진교면 공영 주차장",
+    freeParkingChargeTime: "free",
+    parkingFee: "없음",
+    parkingFeeDiscount: null,
   },
   {
     id: 86,
