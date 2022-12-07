@@ -751,7 +751,7 @@ const superChargerInfo: SuperCharger[] = [
     name: "Seoul - Seongsu D Tower, South Korea",
     status: "OPEN",
     address: {
-      streetName: "B5, 83-21 Wangsimni-ro, Seongdong-gu. SEOUL, 04769",
+      streetName: "서울특별시 성동구 왕십리로 83-21",
       city: "성동구",
       state: "서울특별시",
       shortState: "서울",
@@ -3302,8 +3302,7 @@ const superChargerInfo: SuperCharger[] = [
     name: "Imsil Cheese Theme Park, South Korea",
     status: "OPEN",
     address: {
-      streetName:
-        "Imsil Cheese Theme Park 50, Doin 2-gil, Seongsu-myeon, Imsil-gun",
+      streetName: "전라북도 임실군 성수면 도인2길 50",
       city: "임실군",
       state: "전라북도",
       shortState: "전북",
@@ -3520,7 +3519,7 @@ const superChargerInfo: SuperCharger[] = [
     name: "Sejong - Daepyeong, South Korea",
     status: "OPEN",
     address: {
-      streetName: "Sejong Jonghabundongjang-ro 29",
+      streetName: "세종특별자치시 금남면 용포로 109",
       city: "세종특별자치시",
       state: "세종특별자치시",
       shortState: "세종",
@@ -3553,7 +3552,7 @@ const superChargerInfo: SuperCharger[] = [
     name: "Sokcho - Hanwha Resort, South Korea",
     status: "OPEN",
     address: {
-      streetName: "88, Misiryeong-ro 2983beon-gil, Sokcho-si, Gangwon-do",
+      streetName: "강원도 속초시 미시령로2983번길 111",
       city: "속초",
       state: "강원도",
       shortState: "강원",
