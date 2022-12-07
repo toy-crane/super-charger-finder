@@ -3629,6 +3629,7 @@ const superChargerInfo: SuperCharger[] = [
       country: "South Korea",
       regionId: 102,
       region: "Asia Pacific",
+      locationDetail: "지상",
     },
     gps: { latitude: 36.757187, longitude: 127.224121 },
     dateOpened: "2017-05-31",
