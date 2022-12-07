@@ -29,12 +29,13 @@ const StationDetailCard = ({
   gps: { latitude, longitude },
   commonName,
   KRName,
+  locationId,
 }: StationDetailCardProps) => {
   const handleShare = () => {
     if (isShareSupported()) {
       navigator.share({
         title: streetName,
-        text: streetName,
+        text: `/${locationId}`,
       })
     } else {
       alert("공유하기가 지원되지 않는 환경 입니다.")
