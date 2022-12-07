@@ -2149,6 +2149,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "대전광역시 대덕구 신탄진로 504",
+      locationDetail: "지상",
     },
     gps: {
       latitude: 36.423696,
@@ -2164,7 +2165,10 @@ const superChargerInfo: SuperCharger[] = [
     statusDays: 0,
     urlDiscuss: false,
     KRName: "신탄진 수퍼차저",
-    commonName: "대덕패션타운",
+    commonName: "대덕 패션타운",
+    freeParkingChargeTime: 10,
+    parkingFee: "최초 30분 1,500원 이후 10분당 500원",
+    parkingFeeDiscount: null,
   },
   {
     id: 59,
@@ -2181,6 +2185,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "세종특별자치시 다솜1로 20",
+      locationDetail: "지하 2층",
     },
     gps: {
       latitude: 36.500458,
@@ -2197,6 +2202,10 @@ const superChargerInfo: SuperCharger[] = [
     urlDiscuss: true,
     KRName: "세종 수퍼차저",
     commonName: "KT&G 세종타워C (AK PLAZA 세종 패션관)",
+    freeParkingChargeTime: 30,
+    parkingFee: "정보 없음",
+    parkingFeeDiscount: null,
+    DcCount: 3,
   },
   {
     id: 60,
@@ -2213,6 +2222,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "충청북도 제천시 금성면 청풍호로 741",
+      locationDetail: "지상",
     },
     gps: {
       latitude: 37.072695,
@@ -2229,6 +2239,9 @@ const superChargerInfo: SuperCharger[] = [
     urlDiscuss: true,
     KRName: "제천 수퍼차저",
     commonName: "남제천IC 휴게소",
+    freeParkingChargeTime: "free",
+    parkingFee: "없음",
+    parkingFeeDiscount: null,
   },
   {
     id: 61,
@@ -2245,6 +2258,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "충청북도 충주시 대소원면 기업도시로 26",
+      locationDetail: "지상",
     },
     gps: {
       latitude: 37.0016,
@@ -2260,7 +2274,11 @@ const superChargerInfo: SuperCharger[] = [
     statusDays: 0,
     urlDiscuss: false,
     KRName: "충주 수퍼차저",
-    commonName: "홈마트",
+    commonName: "홈마트 서충주점",
+    DcCount: 7,
+    freeParkingChargeTime: "free",
+    parkingFee: "없음",
+    parkingFeeDiscount: null,
   },
   {
     id: 62,
@@ -2277,6 +2295,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "충청북도 진천군 이월면 내촌리 602-1",
+      locationDetail: "지상",
     },
     gps: {
       latitude: 36.9422,
@@ -2292,7 +2311,11 @@ const superChargerInfo: SuperCharger[] = [
     statusDays: 0,
     urlDiscuss: false,
     KRName: "진천 수퍼차저",
-    commonName: "만나씨이에이",
+    commonName: "만나 씨이에이",
+    DcCount: 3,
+    freeParkingChargeTime: "free",
+    parkingFee: "없음",
+    parkingFeeDiscount: null,
   },
   {
     id: 63,
@@ -2309,6 +2332,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "충청북도 청주시 청원구 율량로 191",
+      locationDetail: "2, 3층",
     },
     gps: {
       latitude: 36.66529,
@@ -2325,6 +2349,9 @@ const superChargerInfo: SuperCharger[] = [
     urlDiscuss: true,
     KRName: "청주 수퍼차저",
     commonName: "이안스퀘어",
+    freeParkingChargeTime: 0,
+    parkingFee: "30분 1500원",
+    parkingFeeDiscount: "주말 무료, 업장 이용 시 무료 주차",
   },
   {
     id: 64,
@@ -2341,6 +2368,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "충청북도 충주시 중원대로 3683",
+      locationDetail: "지상",
     },
     gps: {
       latitude: 36.961,
@@ -2357,6 +2385,10 @@ const superChargerInfo: SuperCharger[] = [
     urlDiscuss: true,
     KRName: "모다아울렛-충주 수퍼차저",
     commonName: "모다아울렛 충주점",
+    DcCount: 3,
+    freeParkingChargeTime: "free",
+    parkingFee: "없음",
+    parkingFeeDiscount: null,
   },
   {
     id: 65,
@@ -2373,6 +2405,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "충청남도 당진시 송악읍 송악로 63",
+      locationDetail: "지상",
     },
     gps: {
       latitude: 36.909503,
@@ -2389,6 +2422,9 @@ const superChargerInfo: SuperCharger[] = [
     urlDiscuss: false,
     KRName: "당진 수퍼차저",
     commonName: "커피란 워시데이 당진점",
+    freeParkingChargeTime: "free",
+    parkingFee: null,
+    parkingFeeDiscount: null,
   },
   {
     id: 66,
@@ -2405,6 +2441,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "충청남도 논산시 연무읍 동안로1113번길 36",
+      locationDetail: "지상",
     },
     gps: {
       latitude: 36.12882428,
@@ -2421,6 +2458,9 @@ const superChargerInfo: SuperCharger[] = [
     urlDiscuss: false,
     KRName: "논산 수퍼차저",
     commonName: "논산 라온빌리지",
+    freeParkingChargeTime: "free",
+    parkingFee: null,
+    parkingFeeDiscount: null,
   },
   {
     id: 67,
@@ -2437,6 +2477,7 @@ const superChargerInfo: SuperCharger[] = [
       regionId: 102,
       region: "Asia Pacific",
       streetName: "충청남도 부여군 규암면 백제문로 387",
+      locationDetail: "1층",
     },
     gps: {
       latitude: 36.306315,
@@ -2453,6 +2494,10 @@ const superChargerInfo: SuperCharger[] = [
     urlDiscuss: true,
     KRName: "부여 수퍼차저",
     commonName: "롯데아울렛 부여점",
+    freeParkingChargeTime: "free",
+    parkingFee: "없음",
+    parkingFeeDiscount: null,
+    DcCount: 5,
   },
   {
     id: 68,
