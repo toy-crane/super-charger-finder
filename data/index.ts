@@ -5,14 +5,13 @@ export interface SuperCharger {
   freeParkingChargeTime: number | "free"
   parkingFee: string | null
   parkingFeeDiscount: string | null
-  chargingSpeed?: "120W" | "250W"
   DcCount?: number
   locationId: string
   stallCount: number
   dateOpened?: string
   counted?: boolean
   elevationMeters?: number
-  powerKilowatt?: number
+  powerKilowatt: 120 | 250
   solarCanopy?: boolean
   battery?: boolean
   statusDays?: number

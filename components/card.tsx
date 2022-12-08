@@ -16,7 +16,7 @@ const ChargingStationCard = ({
   name,
   address: { locationDetail, shortState, city, streetName },
   freeParkingChargeTime,
-  chargingSpeed,
+  powerKilowatt,
   stallCount,
   DcCount,
   commonName,
@@ -33,8 +33,8 @@ const ChargingStationCard = ({
         <Chip
           color="primary"
           size="small"
-          variant={chargingSpeed === "250W" ? "filled" : "outlined"}
-          label={chargingSpeed === "250W" ? "V3 | 250W" : "V2 | 120W"}
+          variant={powerKilowatt === 250 ? "filled" : "outlined"}
+          label={powerKilowatt === 250 ? "V3 | 250W" : "V2 | 120W"}
           sx={{ mb: 1 }}
         ></Chip>
         <Typography variant="h5" component="div">

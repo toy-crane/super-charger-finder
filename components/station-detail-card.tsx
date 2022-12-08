@@ -22,7 +22,7 @@ const StationDetailCard = ({
   address: { streetName, locationDetail, shortState, city },
   stallCount,
   DcCount,
-  chargingSpeed,
+  powerKilowatt,
   freeParkingChargeTime,
   parkingFee,
   parkingFeeDiscount,
@@ -47,8 +47,8 @@ const StationDetailCard = ({
         <Chip
           color="primary"
           size="small"
-          variant={chargingSpeed === "250W" ? "filled" : "outlined"}
-          label={chargingSpeed === "250W" ? "V3 | 250W" : "V2 | 120W"}
+          variant={powerKilowatt === 120 ? "filled" : "outlined"}
+          label={powerKilowatt === 250 ? "V3 | 250W" : "V2 | 120W"}
           sx={{ mb: 1 }}
         ></Chip>
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
