@@ -10,9 +10,17 @@ import { useRecoilValue } from "recoil"
 import Layout from "../components/layout"
 import MenuIcon from "@mui/icons-material/Menu"
 import Menu from "../components/menu"
-import superChargerInfo from "../data"
+import { supabase } from "../libs/supabase-client"
+import { InferGetServerSidePropsType } from "next"
+import { station } from "../types/domain"
 
-export default function Home() {
+type HomeServerSideProps = {
+  stations: station[]
+}
+
+export default function Home({
+  stations,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const [selectedStationId, setSelectedStationId] = useState<number>()
   const searchedStationId = useRecoilValue(searchedStationIdState)
   const [open, setOpen] = useState(false)
@@ -25,17 +33,15 @@ export default function Home() {
     setSelectedStationId(id)
   }
 
-  const selectedStation = superChargerInfo.find(
+  const selectedStation = stations?.find(
     (station) => station.id === selectedStationId
   )
 
-  const searchedStation = superChargerInfo.find(
+  const searchedStation = stations?.find(
     (station) => station.id === searchedStationId
   )
 
-  const searchedStations = searchedStation
-    ? [searchedStation]
-    : superChargerInfo
+  const searchedStations = searchedStation ? [searchedStation] : stations
 
   const handleCardClick = (id: number) => {
     handleSelectedStation(id)
@@ -117,7 +123,7 @@ export default function Home() {
       </Layout.Header>
       <Layout.Main>
         <Stack spacing={2} my={3}>
-          {searchedStations.map((item) => (
+          {searchedStations?.map((item) => (
             <ChargingStationCard
               {...item}
               key={item.name}
@@ -134,4 +140,12 @@ export default function Home() {
       <Menu onClick={handleDraweropen} openDrawer={openDrawer} />
     </>
   )
+}
+export const getServerSideProps = async () => {
+  const { data, error } = await supabase.from("stations").select()
+  return {
+    props: {
+      stations: data,
+    },
+  }
 }

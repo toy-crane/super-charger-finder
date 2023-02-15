@@ -7,12 +7,12 @@ import {
 } from "@mui/material"
 import StationDetailCard from "./station-detail-card"
 import CloseIcon from "@mui/icons-material/Close"
-import { SuperCharger } from "../data"
+import { station } from "../types/domain"
 
 interface StationModalProps {
   open: boolean
   onClose: () => void
-  selectedStation?: SuperCharger
+  selectedStation?: station
 }
 
 const StationModal = ({

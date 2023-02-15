@@ -7,11 +7,11 @@ import {
   Chip,
   Typography,
 } from "@mui/material"
-import { SuperCharger } from "../data"
 import EditIcon from "@mui/icons-material/Edit"
 import Link from "next/link"
+import { station } from "../types/domain"
 
-interface StationDetailCardProps extends SuperCharger {}
+interface StationDetailCardProps extends station {}
 
 const isShareSupported = () => navigator.share ?? false
 
@@ -19,23 +19,27 @@ const MODIFY_SUCHA_FORM_URL = "https://forms.gle/QPjyUhmLpTw2Ux3j9"
 
 const StationDetailCard = ({
   name,
-  address: { streetName, locationDetail, shortState, city },
-  stallCount,
-  DcCount,
-  powerKilowatt,
-  freeParkingChargeTime,
-  parkingFee,
-  parkingFeeDiscount,
-  gps: { latitude, longitude },
-  commonName,
-  KRName,
-  locationId,
+  street_name,
+  location_detail,
+  short_state,
+  city,
+  stall_count,
+  dc_count,
+  power_kilowatt,
+  free_parking_charge_time,
+  parking_fee,
+  parking_fee_discount,
+  latitude,
+  longitude,
+  common_name,
+  kr_name,
+  location_id,
 }: StationDetailCardProps) => {
   const handleShare = () => {
     if (isShareSupported()) {
       navigator.share({
-        title: streetName,
-        text: `/${locationId}`,
+        title: street_name,
+        text: `/${location_id}`,
       })
     } else {
       alert("공유하기가 지원되지 않는 환경 입니다.")
@@ -47,33 +51,33 @@ const StationDetailCard = ({
         <Chip
           color="primary"
           size="small"
-          variant={powerKilowatt === 120 ? "filled" : "outlined"}
-          label={powerKilowatt === 250 ? "V3 | 250W" : "V2 | 120W"}
+          variant={power_kilowatt === 120 ? "filled" : "outlined"}
+          label={power_kilowatt === 250 ? "V3 | 250W" : "V2 | 120W"}
           sx={{ mb: 1 }}
         ></Chip>
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
           <Typography variant="h5">
-            {shortState} - {city} | {commonName}
+            {short_state} - {city} | {common_name}
           </Typography>
           <Link href={MODIFY_SUCHA_FORM_URL}>
             <EditIcon cursor="pointer" fontSize="small" />
           </Link>
         </Box>
-        <Typography variant="subtitle1">{KRName}</Typography>
+        <Typography variant="subtitle1">{kr_name}</Typography>
         <Typography variant="body1" color="text.secondary">
-          {streetName}
+          {street_name}
         </Typography>
         <Typography variant="body1" color="text.secondary" mb={2}>
-          {locationDetail}
+          {location_detail}
         </Typography>
         <Box sx={{ mb: 3 }}>
           <Typography variant="subtitle1">충전</Typography>
           <Typography variant="body2" color="text.secondary">
-            슈퍼 차저: {stallCount}기
+            슈퍼 차저: {stall_count}기
           </Typography>
-          {DcCount && (
+          {dc_count && (
             <Typography variant="body2" color="text.secondary">
-              데스티네이션 차저: {DcCount}기
+              데스티네이션 차저: {dc_count}기
             </Typography>
           )}
         </Box>
@@ -81,10 +85,10 @@ const StationDetailCard = ({
           <Typography variant="subtitle1">주차요금</Typography>
           <Typography variant="body1" sx={{ fontWeight: "bold" }}>
             무료 회차 시간 -{" "}
-            {freeParkingChargeTime
-              ? freeParkingChargeTime === "free"
+            {free_parking_charge_time
+              ? free_parking_charge_time === "free"
                 ? "무료"
-                : `${freeParkingChargeTime}분`
+                : `${free_parking_charge_time}분`
               : "없음"}
           </Typography>
           <Typography
@@ -92,11 +96,11 @@ const StationDetailCard = ({
             sx={{ whiteSpace: "pre-line" }}
             color="text.secondary"
           >
-            {parkingFee}
+            {parking_fee}
           </Typography>
         </Box>
 
-        {parkingFeeDiscount && (
+        {parking_fee_discount && (
           <Box sx={{ mb: 3 }}>
             <Typography variant="subtitle1">주차 할인</Typography>
             <Typography
@@ -104,7 +108,7 @@ const StationDetailCard = ({
               sx={{ whiteSpace: "pre-line" }}
               color="text.secondary"
             >
-              {parkingFeeDiscount}
+              {parking_fee_discount}
             </Typography>
           </Box>
         )}
