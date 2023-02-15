@@ -18,6 +18,8 @@ const SearchInput = ({ stations }: SearchInputProps) => {
     <Autocomplete
       id="search input"
       options={stations}
+      onCopy={(e) => e.preventDefault()}
+      onPaste={(e) => e.preventDefault()}
       sx={{ flex: 1 }}
       noOptionsText="조건에 맞는 슈퍼차저가 존재하지 않습니다."
       getOptionLabel={(option) =>
