@@ -118,7 +118,7 @@ export default function Home({
           >
             <MenuIcon />
           </IconButton>
-          <SearchInput />
+          <SearchInput stations={stations} />
         </Container>
       </Layout.Header>
       <Layout.Main>
@@ -143,6 +143,11 @@ export default function Home({
 }
 export const getServerSideProps = async () => {
   const { data, error } = await supabase.from("stations").select()
+
+  if (!data || error) {
+    throw Error("정삭적으로 데이터를 가져오지 못했습니다.")
+  }
+
   return {
     props: {
       stations: data,

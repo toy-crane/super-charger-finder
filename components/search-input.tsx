@@ -1,9 +1,13 @@
 import { Autocomplete, TextField } from "@mui/material"
 import { useRecoilState } from "recoil"
 import { searchedStationIdState } from "../atoms"
-import superChargerInfo from "../data"
+import { station } from "../types/domain"
 
-const SearchInput = () => {
+interface SearchInputProps {
+  stations: station[]
+}
+
+const SearchInput = ({ stations }: SearchInputProps) => {
   const [_, setSearchedStationId] = useRecoilState(searchedStationIdState)
 
   const handleInputChage = (id: number | undefined) => {
@@ -13,11 +17,11 @@ const SearchInput = () => {
   return (
     <Autocomplete
       id="search input"
-      options={superChargerInfo}
+      options={stations}
       sx={{ flex: 1 }}
       noOptionsText="조건에 맞는 슈퍼차저가 존재하지 않습니다."
       getOptionLabel={(option) =>
-        `${option.address.shortState}-${option.address.city} | ${option.commonName}`
+        `${option.short_state}-${option.city} | ${option.common_name}`
       }
       onChange={(_, value) =>
         value ? handleInputChage(value.id) : handleInputChage(undefined)
