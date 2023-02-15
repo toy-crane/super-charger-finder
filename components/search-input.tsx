@@ -1,6 +1,6 @@
 import { Autocomplete, TextField } from "@mui/material"
 import { useRecoilState } from "recoil"
-import { searchedStationIdState } from "../atoms"
+import { inputFocusState, searchedStationIdState } from "../atoms"
 import { station } from "../types/domain"
 
 interface SearchInputProps {
@@ -9,9 +9,17 @@ interface SearchInputProps {
 
 const SearchInput = ({ stations }: SearchInputProps) => {
   const [_, setSearchedStationId] = useRecoilState(searchedStationIdState)
+  const [isFocused, setIsFocused] = useRecoilState(inputFocusState)
 
   const handleInputChage = (id: number | undefined) => {
     setSearchedStationId(id)
+  }
+  const handleFocus = () => {
+    setIsFocused(true)
+  }
+
+  const handleBlur = () => {
+    setIsFocused(false)
   }
 
   return (
@@ -20,6 +28,8 @@ const SearchInput = ({ stations }: SearchInputProps) => {
       options={stations}
       onCopy={(e) => e.preventDefault()}
       onPaste={(e) => e.preventDefault()}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
       sx={{ flex: 1 }}
       noOptionsText="조건에 맞는 슈퍼차저가 존재하지 않습니다."
       getOptionLabel={(option) =>

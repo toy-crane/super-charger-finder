@@ -5,7 +5,7 @@ import ChargingStationCard from "../components/card"
 import SearchInput from "../components/search-input"
 import StationModal from "../components/station-modal"
 import Head from "next/head"
-import { searchedStationIdState } from "../atoms"
+import { inputFocusState, searchedStationIdState } from "../atoms"
 import { useRecoilValue } from "recoil"
 import Layout from "../components/layout"
 import MenuIcon from "@mui/icons-material/Menu"
@@ -23,6 +23,7 @@ export default function Home({
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const [selectedStationId, setSelectedStationId] = useState<number>()
   const searchedStationId = useRecoilValue(searchedStationIdState)
+  const isInputFocused = useRecoilValue(inputFocusState)
   const [open, setOpen] = useState(false)
   const [openDrawer, setOpenDrawer] = useState(false)
   const handleDraweropen = () => setOpenDrawer((openDrawer) => !openDrawer)
@@ -109,15 +110,17 @@ export default function Home({
             gap: 1,
           }}
         >
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            onClick={handleDraweropen}
-          >
-            <MenuIcon />
-          </IconButton>
+          {!isInputFocused && (
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              onClick={handleDraweropen}
+            >
+              <MenuIcon />
+            </IconButton>
+          )}
           <SearchInput stations={stations} />
         </Container>
       </Layout.Header>
