@@ -26,10 +26,10 @@ export interface Database {
           name: string | null
           parking_fee: string | null
           parking_fee_discount: string | null
-          power_kilowatt: number | null
+          power_kilowatt: number
           region: string | null
           region_id: number | null
-          short_state: string | null
+          short_state: string
           stall_count: number | null
           state: string | null
           status: string | null
@@ -51,10 +51,10 @@ export interface Database {
           name?: string | null
           parking_fee?: string | null
           parking_fee_discount?: string | null
-          power_kilowatt?: number | null
+          power_kilowatt: number
           region?: string | null
           region_id?: number | null
-          short_state?: string | null
+          short_state: string
           stall_count?: number | null
           state?: string | null
           status?: string | null
@@ -76,10 +76,10 @@ export interface Database {
           name?: string | null
           parking_fee?: string | null
           parking_fee_discount?: string | null
-          power_kilowatt?: number | null
+          power_kilowatt?: number
           region?: string | null
           region_id?: number | null
-          short_state?: string | null
+          short_state?: string
           stall_count?: number | null
           state?: string | null
           status?: string | null
