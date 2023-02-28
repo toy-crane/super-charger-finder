@@ -1,5 +1,7 @@
 import { Box, Chip, Slider, Stack, Typography } from "@mui/material"
 import React, { useState } from "react"
+import { useRecoilState } from "recoil"
+import { statesState } from "../../atoms"
 
 const StateNames = [
   "서울",
@@ -22,10 +24,24 @@ const StateNames = [
 ]
 
 const StateFilter = () => {
+  const [states, setStates] = useRecoilState(statesState)
+  const handleChipClick = (stateName: string) => {
+    if (states.includes(stateName)) {
+      setStates(states.filter((state) => state !== stateName))
+    } else {
+      setStates([...states, stateName])
+    }
+  }
   return (
     <Stack direction="row" py={1} flexWrap="wrap" gap={0.5}>
       {StateNames.map((stateName) => (
-        <Chip label={stateName} key={stateName} />
+        <Chip
+          label={stateName}
+          key={stateName}
+          color={states.includes(stateName) ? "primary" : "info"}
+          clickable
+          onClick={() => handleChipClick(stateName)}
+        />
       ))}
     </Stack>
   )
