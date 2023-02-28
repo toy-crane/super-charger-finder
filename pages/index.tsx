@@ -13,6 +13,7 @@ import Menu from "../components/menu"
 import { supabase } from "../libs/supabase-client"
 import { InferGetServerSidePropsType } from "next"
 import { station } from "../types/domain"
+import StationFilter from "../components/station-filter"
 
 type HomeServerSideProps = {
   stations: station[]
@@ -122,6 +123,9 @@ export default function Home({
             </IconButton>
           )}
           <SearchInput stations={stations} />
+        </Container>
+        <Container maxWidth="sm" sx={{ mx: "auto", display: "flex", gap: 1 }}>
+          <StationFilter stations={stations} />
         </Container>
       </Layout.Header>
       <Layout.Main>
