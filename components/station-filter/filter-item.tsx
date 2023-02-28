@@ -44,7 +44,8 @@ const StateFilter = () => {
         <Chip
           label={stateName}
           key={stateName}
-          color={states.includes(stateName) ? "primary" : "info"}
+          color="info"
+          variant={states.includes(stateName) ? "filled" : "outlined"}
           clickable
           onClick={() => handleChipClick(stateName)}
         />
@@ -69,7 +70,8 @@ const PowerFilter = () => {
           label={label}
           key={value}
           clickable
-          color={states.includes(value) ? "primary" : "info"}
+          color="info"
+          variant={states.includes(value) ? "filled" : "outlined"}
           onClick={() => handleChipClick(value)}
         />
       ))}
