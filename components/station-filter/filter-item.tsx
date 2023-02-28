@@ -1,7 +1,8 @@
+import { Label } from "@mui/icons-material"
 import { Box, Chip, Slider, Stack, Typography } from "@mui/material"
 import React, { useState } from "react"
 import { useRecoilState } from "recoil"
-import { statesState } from "../../atoms"
+import { powerState, statesState } from "../../atoms"
 
 const StateNames = [
   "서울",
@@ -21,6 +22,11 @@ const StateNames = [
   "울산",
   "부산",
   "제주",
+]
+
+const StationPowerValues = [
+  { label: "V2 | 120W", value: 120 },
+  { label: "V3 | 250W", value: 250 },
 ]
 
 const StateFilter = () => {
@@ -48,10 +54,25 @@ const StateFilter = () => {
 }
 
 const PowerFilter = () => {
+  const [states, setStates] = useRecoilState(powerState)
+  const handleChipClick = (value: number) => {
+    if (states.includes(value)) {
+      setStates(states.filter((state) => state !== value))
+    } else {
+      setStates([...states, value])
+    }
+  }
   return (
     <Stack direction="row" py={1} flexWrap="wrap" gap={0.5}>
-      <Chip label="V2 | 120W" />
-      <Chip label="V3 | 250W" />
+      {StationPowerValues.map(({ label, value }) => (
+        <Chip
+          label={label}
+          key={value}
+          clickable
+          color={states.includes(value) ? "primary" : "info"}
+          onClick={() => handleChipClick(value)}
+        />
+      ))}
     </Stack>
   )
 }
