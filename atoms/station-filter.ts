@@ -33,25 +33,6 @@ export const hasDiscountState = atom<StationFilterState["hasDiscount"]>({
   default: undefined,
 })
 
-export const hasDiscountFieldValues = selector<FieldsValue<boolean>[]>({
-  key: "hasDiscountFieldValues",
-  get: ({ get }) => {
-    const hasDiscount = get(hasDiscountState)
-    return [
-      {
-        label: "할인 있음",
-        value: true,
-        active: hasDiscount === true,
-      },
-      {
-        label: "할인 없음",
-        value: false,
-        active: hasDiscount === false,
-      },
-    ]
-  },
-})
-
 export const stationFilterState = selector<StationFilterState>({
   key: "stationFilter",
   get: ({ get }) => {

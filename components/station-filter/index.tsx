@@ -10,6 +10,7 @@ import {
 } from "../../atoms/station-filter"
 import StateFilter from "./state-filter"
 import PowerFilter from "./power-filter"
+import HasDiscountFilter from "./has-discount-filter"
 
 export default function StationFilter() {
   const stationFilterValues = useRecoilValue(stationFilterValuesState)
@@ -51,6 +52,8 @@ const SelectedFilterItemForm = ({
       return <StateFilter />
     case "powers":
       return <PowerFilter />
+    case "hasDiscount":
+      return <HasDiscountFilter />
     default:
       return null
   }
