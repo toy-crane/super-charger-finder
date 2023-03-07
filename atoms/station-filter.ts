@@ -2,6 +2,7 @@ import { atom, selector } from "recoil"
 
 export type StationFilterState = {
   states: string[]
+  powers: number[]
 }
 
 export type FieldsValue = {
@@ -34,9 +35,28 @@ const StateNames = [
   "제주",
 ]
 
+const PowerNames = [120, 250]
+
 export const statesState = atom<StationFilterState["states"]>({
   key: "states",
   default: [],
+})
+
+export const powerState = atom<StationFilterState["powers"]>({
+  key: "powers",
+  default: [],
+})
+
+export const PowerFieldValues = selector<FieldsValue[]>({
+  key: "powerFieldValues",
+  get: ({ get }) => {
+    const powers = get(powerState)
+    return PowerNames.map((name) => ({
+      label: `${name}kW`,
+      value: String(name),
+      active: powers.includes(name),
+    })).sort((a, b) => (a.active === b.active ? 0 : a.active ? -1 : 1))
+  },
 })
 
 export const stateFieldValues = selector<FieldsValue[]>({
@@ -56,6 +76,7 @@ export const stationFilterState = selector<StationFilterState>({
   get: ({ get }) => {
     return {
       states: get(statesState),
+      powers: get(powerState),
     }
   },
 })
@@ -63,12 +84,20 @@ export const stationFilterState = selector<StationFilterState>({
 export const stationFilterValuesState = selector<FilterFieldsValue[]>({
   key: "stationFilterValues",
   get: ({ get }) => {
-    const { states } = get(stationFilterState)
+    const { states, powers } = get(stationFilterState)
     return [
       {
         value: "states",
         label: states.length > 0 ? states.join(", ") : "지역",
         active: states.length > 0,
+      },
+      {
+        value: "powers",
+        label:
+          powers.length > 0
+            ? powers.map((p) => `${p}W`).join(", ")
+            : "충전속도",
+        active: powers.length > 0,
       },
     ]
   },

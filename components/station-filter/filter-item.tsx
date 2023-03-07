@@ -1,7 +1,12 @@
 import { Box, Chip, Slider, Stack } from "@mui/material"
 import React from "react"
 import { useRecoilState, useRecoilValue } from "recoil"
-import { stateFieldValues, statesState } from "../../atoms/station-filter"
+import {
+  PowerFieldValues,
+  powerState,
+  stateFieldValues,
+  statesState,
+} from "../../atoms/station-filter"
 
 const StateFilter = () => {
   const [states, setStates] = useRecoilState(statesState)
@@ -29,30 +34,32 @@ const StateFilter = () => {
   )
 }
 
-// const PowerFilter = () => {
-//   const [powers, setPowers] = useRecoilState(powerState)
-//   const handleChipClick = (value: number) => {
-//     if (powers?.includes(value)) {
-//       setPowers(powers?.filter((state) => state !== value))
-//     } else {
-//       setPowers(powers ? [...powers, value] : [value])
-//     }
-//   }
-//   return (
-//     <Stack direction="row" py={1} flexWrap="wrap" gap={0.5}>
-//       {StationPowerValues.map(({ label, value }) => (
-//         <Chip
-//           label={label}
-//           key={value}
-//           clickable
-//           color="info"
-//           variant={powers?.includes(value) ? "filled" : "outlined"}
-//           onClick={() => handleChipClick(value)}
-//         />
-//       ))}
-//     </Stack>
-//   )
-// }
+export const PowerFilter = () => {
+  const [powers, setPowers] = useRecoilState(powerState)
+  const fields = useRecoilValue(PowerFieldValues)
+  const handleChipClick = (value: string) => {
+    const power = Number(value)
+    if (powers?.includes(power)) {
+      setPowers(powers?.filter((state) => state !== power))
+    } else {
+      setPowers(powers ? [...powers, power] : [power])
+    }
+  }
+  return (
+    <Stack direction="row" py={1} flexWrap="wrap" gap={0.5}>
+      {fields.map(({ label, value, active }) => (
+        <Chip
+          label={label}
+          key={value}
+          clickable
+          color="info"
+          variant={active ? "filled" : "outlined"}
+          onClick={() => handleChipClick(value)}
+        />
+      ))}
+    </Stack>
+  )
+}
 
 const marks = [
   {

@@ -2,7 +2,7 @@ import * as React from "react"
 import Filter from "@mui/material/Chip"
 import Stack from "@mui/material/Stack"
 import { Box } from "@mui/material"
-import { StateFilter } from "./filter-item"
+import { PowerFilter, StateFilter } from "./filter-item"
 
 import { useRecoilValue } from "recoil"
 import {
@@ -48,6 +48,8 @@ const SelectedFilterItemForm = ({
   switch (filterItem) {
     case "states":
       return <StateFilter />
+    case "powers":
+      return <PowerFilter />
     default:
       return null
   }
