@@ -10,6 +10,10 @@ export type FieldsValue = {
   active: boolean
 }
 
+export interface FilterFieldsValue extends FieldsValue {
+  value: keyof StationFilterState
+}
+
 const StateNames = [
   "서울",
   "경기",
@@ -56,7 +60,7 @@ export const stationFilterState = selector<StationFilterState>({
   },
 })
 
-export const stationFilterValuesState = selector<FieldsValue[]>({
+export const stationFilterValuesState = selector<FilterFieldsValue[]>({
   key: "stationFilterValues",
   get: ({ get }) => {
     const { states } = get(stationFilterState)

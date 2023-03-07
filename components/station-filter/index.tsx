@@ -5,13 +5,17 @@ import { Box } from "@mui/material"
 import { StateFilter } from "./filter-item"
 
 import { useRecoilValue } from "recoil"
-import { stationFilterValuesState } from "../../atoms/station-filter"
+import {
+  FilterFieldsValue,
+  stationFilterValuesState,
+} from "../../atoms/station-filter"
 
 export default function StationFilter() {
   const stationFilterValues = useRecoilValue(stationFilterValuesState)
-  const [openedFilterItem, setopenedFilterItem] = React.useState<string>()
+  const [openedFilterItem, setopenedFilterItem] =
+    React.useState<FilterFieldsValue["value"]>()
 
-  const handleClick = (value: string) => {
+  const handleClick = (value: FilterFieldsValue["value"]) => {
     setopenedFilterItem(value === openedFilterItem ? undefined : value)
   }
 
@@ -36,7 +40,11 @@ export default function StationFilter() {
   )
 }
 
-const SelectedFilterItemForm = ({ filterItem }: { filterItem: string }) => {
+const SelectedFilterItemForm = ({
+  filterItem,
+}: {
+  filterItem: FilterFieldsValue["value"]
+}) => {
   switch (filterItem) {
     case "states":
       return <StateFilter />
