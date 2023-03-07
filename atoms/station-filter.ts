@@ -18,28 +18,6 @@ export interface FilterFieldsValue {
   active: boolean
 }
 
-export const StateNames = [
-  "서울",
-  "경기",
-  "인천",
-  "강원",
-  "충북",
-  "충남",
-  "대전",
-  "세종",
-  "전북",
-  "전남",
-  "광주",
-  "경북",
-  "경남",
-  "대구",
-  "울산",
-  "부산",
-  "제주",
-]
-
-const PowerNames = [120, 250]
-
 export const statesState = atom<StationFilterState["states"]>({
   key: "states",
   default: [],
@@ -53,30 +31,6 @@ export const powerState = atom<StationFilterState["powers"]>({
 export const hasDiscountState = atom<StationFilterState["hasDiscount"]>({
   key: "hasDiscount",
   default: undefined,
-})
-
-export const PowerFieldValues = selector<FieldsValue<number>[]>({
-  key: "powerFieldValues",
-  get: ({ get }) => {
-    const powers = get(powerState)
-    return PowerNames.map((name) => ({
-      label: `${name}kW`,
-      value: name,
-      active: powers.includes(name),
-    })).sort((a, b) => (a.active === b.active ? 0 : a.active ? -1 : 1))
-  },
-})
-
-export const stateFieldValues = selector<FieldsValue<string>[]>({
-  key: "stateFieldValues",
-  get: ({ get }) => {
-    const state = get(statesState)
-    return StateNames.map((stateName) => ({
-      label: stateName,
-      value: stateName,
-      active: state.includes(stateName),
-    })).sort((a, b) => (a.active === b.active ? 0 : a.active ? -1 : 1))
-  },
 })
 
 export const hasDiscountFieldValues = selector<FieldsValue<boolean>[]>({

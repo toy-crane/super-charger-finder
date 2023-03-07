@@ -1,11 +1,27 @@
 import { Box, Chip, Slider, Stack } from "@mui/material"
 import React from "react"
 import { selector, useRecoilState, useRecoilValue } from "recoil"
-import {
-  FieldsValue,
-  StateNames,
-  statesState,
-} from "../../atoms/station-filter"
+import { FieldsValue, statesState } from "../../atoms/station-filter"
+
+export const StateNames = [
+  "서울",
+  "경기",
+  "인천",
+  "강원",
+  "충북",
+  "충남",
+  "대전",
+  "세종",
+  "전북",
+  "전남",
+  "광주",
+  "경북",
+  "경남",
+  "대구",
+  "울산",
+  "부산",
+  "제주",
+]
 
 export const stateFieldValues = selector<FieldsValue<string>[]>({
   key: "stateFieldValues",

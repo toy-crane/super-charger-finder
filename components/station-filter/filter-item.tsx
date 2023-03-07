@@ -1,64 +1,5 @@
 import { Box, Chip, Slider, Stack } from "@mui/material"
 import React from "react"
-import { useRecoilState, useRecoilValue } from "recoil"
-import {
-  PowerFieldValues,
-  powerState,
-  stateFieldValues,
-  statesState,
-} from "../../atoms/station-filter"
-
-const StateFilter = () => {
-  const [states, setStates] = useRecoilState(statesState)
-  const fields = useRecoilValue(stateFieldValues)
-  const handleChipClick = (stateName: string) => {
-    if (states?.includes(stateName)) {
-      setStates(states.filter((state) => state !== stateName))
-    } else {
-      setStates(states ? [...states, stateName] : [stateName])
-    }
-  }
-  return (
-    <Stack direction="row" py={1} flexWrap="wrap" gap={0.5}>
-      {fields.map((field) => (
-        <Chip
-          label={field.label}
-          key={field.value}
-          color="info"
-          variant={field.active ? "filled" : "outlined"}
-          clickable
-          onClick={() => handleChipClick(field.value)}
-        />
-      ))}
-    </Stack>
-  )
-}
-
-export const PowerFilter = () => {
-  const [powers, setPowers] = useRecoilState(powerState)
-  const fields = useRecoilValue(PowerFieldValues)
-  const handleChipClick = (value: number) => {
-    if (powers?.includes(value)) {
-      setPowers(powers?.filter((state) => state !== value))
-    } else {
-      setPowers(powers ? [...powers, value] : [value])
-    }
-  }
-  return (
-    <Stack direction="row" py={1} flexWrap="wrap" gap={0.5}>
-      {fields.map(({ label, value, active }) => (
-        <Chip
-          label={label}
-          key={label}
-          clickable
-          color="info"
-          variant={active ? "filled" : "outlined"}
-          onClick={() => handleChipClick(value)}
-        />
-      ))}
-    </Stack>
-  )
-}
 
 const marks = [
   {
@@ -123,4 +64,4 @@ const ParkingFeeDiscountFilter = () => {
   )
 }
 
-export { StateFilter, FreeParkingFilter, ParkingFeeDiscountFilter }
+export { FreeParkingFilter, ParkingFeeDiscountFilter }
