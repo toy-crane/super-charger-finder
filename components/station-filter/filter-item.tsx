@@ -37,12 +37,11 @@ const StateFilter = () => {
 export const PowerFilter = () => {
   const [powers, setPowers] = useRecoilState(powerState)
   const fields = useRecoilValue(PowerFieldValues)
-  const handleChipClick = (value: string) => {
-    const power = Number(value)
-    if (powers?.includes(power)) {
-      setPowers(powers?.filter((state) => state !== power))
+  const handleChipClick = (value: number) => {
+    if (powers?.includes(value)) {
+      setPowers(powers?.filter((state) => state !== value))
     } else {
-      setPowers(powers ? [...powers, power] : [power])
+      setPowers(powers ? [...powers, value] : [value])
     }
   }
   return (
@@ -50,7 +49,7 @@ export const PowerFilter = () => {
       {fields.map(({ label, value, active }) => (
         <Chip
           label={label}
-          key={value}
+          key={label}
           clickable
           color="info"
           variant={active ? "filled" : "outlined"}

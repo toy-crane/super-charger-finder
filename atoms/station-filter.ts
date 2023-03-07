@@ -3,16 +3,19 @@ import { atom, selector } from "recoil"
 export type StationFilterState = {
   states: string[]
   powers: number[]
+  hasDiscount?: boolean
 }
 
-export type FieldsValue = {
+export type FieldsValue<T> = {
   label: string
-  value: string
+  value: T
   active: boolean
 }
 
-export interface FilterFieldsValue extends FieldsValue {
+export interface FilterFieldsValue {
   value: keyof StationFilterState
+  label: string
+  active: boolean
 }
 
 const StateNames = [
@@ -47,19 +50,24 @@ export const powerState = atom<StationFilterState["powers"]>({
   default: [],
 })
 
-export const PowerFieldValues = selector<FieldsValue[]>({
+export const hasDiscountState = atom<StationFilterState["hasDiscount"]>({
+  key: "hasDiscount",
+  default: undefined,
+})
+
+export const PowerFieldValues = selector<FieldsValue<number>[]>({
   key: "powerFieldValues",
   get: ({ get }) => {
     const powers = get(powerState)
     return PowerNames.map((name) => ({
       label: `${name}kW`,
-      value: String(name),
+      value: name,
       active: powers.includes(name),
     })).sort((a, b) => (a.active === b.active ? 0 : a.active ? -1 : 1))
   },
 })
 
-export const stateFieldValues = selector<FieldsValue[]>({
+export const stateFieldValues = selector<FieldsValue<string>[]>({
   key: "stateFieldValues",
   get: ({ get }) => {
     const state = get(statesState)
@@ -71,12 +79,32 @@ export const stateFieldValues = selector<FieldsValue[]>({
   },
 })
 
+export const hasDiscountFieldValues = selector<FieldsValue<boolean>[]>({
+  key: "hasDiscountFieldValues",
+  get: ({ get }) => {
+    const hasDiscount = get(hasDiscountState)
+    return [
+      {
+        label: "할인 있음",
+        value: true,
+        active: hasDiscount === true,
+      },
+      {
+        label: "할인 없음",
+        value: false,
+        active: hasDiscount === false,
+      },
+    ]
+  },
+})
+
 export const stationFilterState = selector<StationFilterState>({
   key: "stationFilter",
   get: ({ get }) => {
     return {
       states: get(statesState),
       powers: get(powerState),
+      hasDiscount: get(hasDiscountState),
     }
   },
 })
@@ -84,7 +112,7 @@ export const stationFilterState = selector<StationFilterState>({
 export const stationFilterValuesState = selector<FilterFieldsValue[]>({
   key: "stationFilterValues",
   get: ({ get }) => {
-    const { states, powers } = get(stationFilterState)
+    const { states, powers, hasDiscount } = get(stationFilterState)
     return [
       {
         value: "states",
@@ -98,6 +126,16 @@ export const stationFilterValuesState = selector<FilterFieldsValue[]>({
             ? powers.map((p) => `${p}W`).join(", ")
             : "충전속도",
         active: powers.length > 0,
+      },
+      {
+        value: "hasDiscount",
+        label:
+          hasDiscount === undefined
+            ? "주차 할인"
+            : hasDiscount
+            ? "할인 있음"
+            : "할인 없음",
+        active: hasDiscount !== undefined,
       },
     ]
   },
