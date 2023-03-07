@@ -1,5 +1,7 @@
 import { Box, Slider } from "@mui/material"
 import React from "react"
+import { useRecoilState } from "recoil"
+import { freeParkingTimeState } from "../../atoms/station-filter"
 
 const marks = [
   {
@@ -33,17 +35,18 @@ const marks = [
 ]
 
 const FreeParkingFilter = () => {
-  const [value, setValue] = React.useState<number[]>([20, 40])
+  const [freeParkingTime, setFreeParkingTime] =
+    useRecoilState(freeParkingTimeState)
 
-  const handleChange = (event: Event, newValue: number | number[]) => {
-    setValue(newValue as number[])
+  const handleChange = (_: Event, newValue: number | number[]) => {
+    setFreeParkingTime(newValue as [number, number])
   }
   return (
-    <Box>
+    <Box flex={1}>
       <Slider
         aria-label="parking time"
         onChange={handleChange}
-        value={value}
+        value={freeParkingTime}
         getAriaValueText={(value) => `${value} 분`}
         valueLabelDisplay="auto"
         marks={marks}
@@ -55,4 +58,4 @@ const FreeParkingFilter = () => {
   )
 }
 
-export { FreeParkingFilter }
+export default FreeParkingFilter

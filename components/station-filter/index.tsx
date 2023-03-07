@@ -11,6 +11,7 @@ import {
 import StateFilter from "./state-filter"
 import PowerFilter from "./power-filter"
 import HasDiscountFilter from "./has-discount-filter"
+import FreeParkingFilter from "./free-parking-filter"
 
 export default function StationFilter() {
   const stationFilterValues = useRecoilValue(stationFilterValuesState)
@@ -54,6 +55,8 @@ const SelectedFilterItemForm = ({
       return <PowerFilter />
     case "hasDiscount":
       return <HasDiscountFilter />
+    case "freeParkingTime":
+      return <FreeParkingFilter />
     default:
       return null
   }

@@ -4,6 +4,7 @@ export type StationFilterState = {
   states: string[]
   powers: number[]
   hasDiscount?: boolean
+  freeParkingTime: [number, number] | []
 }
 
 export type FieldsValue<T> = {
@@ -33,6 +34,13 @@ export const hasDiscountState = atom<StationFilterState["hasDiscount"]>({
   default: undefined,
 })
 
+export const freeParkingTimeState = atom<StationFilterState["freeParkingTime"]>(
+  {
+    key: "freeParkingTime",
+    default: [0, 60],
+  }
+)
+
 export const stationFilterState = selector<StationFilterState>({
   key: "stationFilter",
   get: ({ get }) => {
@@ -40,6 +48,7 @@ export const stationFilterState = selector<StationFilterState>({
       states: get(statesState),
       powers: get(powerState),
       hasDiscount: get(hasDiscountState),
+      freeParkingTime: get(freeParkingTimeState),
     }
   },
 })
@@ -47,7 +56,8 @@ export const stationFilterState = selector<StationFilterState>({
 export const stationFilterValuesState = selector<FilterFieldsValue[]>({
   key: "stationFilterValues",
   get: ({ get }) => {
-    const { states, powers, hasDiscount } = get(stationFilterState)
+    const { states, powers, hasDiscount, freeParkingTime } =
+      get(stationFilterState)
     return [
       {
         value: "states",
@@ -58,7 +68,7 @@ export const stationFilterValuesState = selector<FilterFieldsValue[]>({
         value: "powers",
         label:
           powers.length > 0
-            ? powers.map((p) => `${p}W`).join(", ")
+            ? `속도 ${powers.map((p) => `${p}W`).join(", ")}`
             : "충전속도",
         active: powers.length > 0,
       },
@@ -68,9 +78,17 @@ export const stationFilterValuesState = selector<FilterFieldsValue[]>({
           hasDiscount === undefined
             ? "주차 할인"
             : hasDiscount
-            ? "할인 있음"
-            : "할인 없음",
+            ? "주차 할인 있음"
+            : "주차 할인 없음",
         active: hasDiscount !== undefined,
+      },
+      {
+        value: "freeParkingTime",
+        label:
+          freeParkingTime.length > 1
+            ? `회차 ${freeParkingTime[0]}분 ~ ${freeParkingTime[1]}분`
+            : "회차 시간",
+        active: freeParkingTime.length > 1,
       },
     ]
   },
