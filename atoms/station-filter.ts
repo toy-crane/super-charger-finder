@@ -18,7 +18,7 @@ export interface FilterFieldsValue {
   active: boolean
 }
 
-const StateNames = [
+export const StateNames = [
   "서울",
   "경기",
   "인천",
