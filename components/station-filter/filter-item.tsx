@@ -1,4 +1,4 @@
-import { Box, Chip, Slider, Stack } from "@mui/material"
+import { Box, Slider } from "@mui/material"
 import React from "react"
 
 const marks = [
@@ -55,13 +55,4 @@ const FreeParkingFilter = () => {
   )
 }
 
-const ParkingFeeDiscountFilter = () => {
-  return (
-    <Stack direction="row" py={1} flexWrap="wrap" gap={0.5}>
-      <Chip label="있음" />
-      <Chip label="없음" />
-    </Stack>
-  )
-}
-
-export { FreeParkingFilter, ParkingFeeDiscountFilter }
+export { FreeParkingFilter }
