@@ -23,8 +23,19 @@ export default function StationFilter() {
   }
 
   return (
-    <Box display={"flex"} flexDirection={"column"} gap={1}>
-      <Stack direction="row" spacing={1} py={1}>
+    <Box
+      display={"flex"}
+      flexDirection={"column"}
+      gap={1}
+      flexGrow={1}
+      width="100%"
+    >
+      <Stack
+        direction="row"
+        spacing={1}
+        py={1}
+        sx={{ overflowX: "scroll", overflowY: "hidden" }}
+      >
         {stationFilterValues.map((field) => (
           <Filter
             label={field.label}

@@ -42,7 +42,7 @@ const FreeParkingFilter = () => {
     setFreeParkingTime(newValue as [number, number])
   }
   return (
-    <Box flex={1}>
+    <Box px={2}>
       <Slider
         aria-label="parking time"
         onChange={handleChange}
