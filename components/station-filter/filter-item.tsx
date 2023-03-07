@@ -1,92 +1,58 @@
-import { Label } from "@mui/icons-material"
-import { Box, Chip, Slider, Stack, Typography } from "@mui/material"
-import React, { useState } from "react"
-import { useRecoilState } from "recoil"
-import { powerState, statesState } from "../../atoms"
-
-const StateNames = [
-  "서울",
-  "경기",
-  "인천",
-  "강원",
-  "충북",
-  "충남",
-  "대전",
-  "세종",
-  "전북",
-  "전남",
-  "광주",
-  "경북",
-  "경남",
-  "대구",
-  "울산",
-  "부산",
-  "제주",
-]
-
-const StationPowerValues = [
-  { label: "V2 | 120W", value: 120 },
-  { label: "V3 | 250W", value: 250 },
-]
+import { Box, Chip, Slider, Stack } from "@mui/material"
+import React from "react"
+import { useRecoilState, useRecoilValue } from "recoil"
+import { stateFieldValues, statesState } from "../../atoms/station-filter"
 
 const StateFilter = () => {
   const [states, setStates] = useRecoilState(statesState)
+  const fields = useRecoilValue(stateFieldValues)
   const handleChipClick = (stateName: string) => {
-    if (states.includes(stateName)) {
+    if (states?.includes(stateName)) {
       setStates(states.filter((state) => state !== stateName))
     } else {
-      setStates([...states, stateName])
+      setStates(states ? [...states, stateName] : [stateName])
     }
   }
   return (
     <Stack direction="row" py={1} flexWrap="wrap" gap={0.5}>
-      {StateNames.map((stateName) => (
+      {fields.map((field) => (
         <Chip
-          label={stateName}
-          key={stateName}
+          label={field.label}
+          key={field.value}
           color="info"
-          variant={states.includes(stateName) ? "filled" : "outlined"}
+          variant={field.active ? "filled" : "outlined"}
           clickable
-          onClick={() => handleChipClick(stateName)}
+          onClick={() => handleChipClick(field.value)}
         />
       ))}
     </Stack>
   )
 }
 
-const PowerFilter = () => {
-  const [states, setStates] = useRecoilState(powerState)
-  const handleChipClick = (value: number) => {
-    if (states.includes(value)) {
-      setStates(states.filter((state) => state !== value))
-    } else {
-      setStates([...states, value])
-    }
-  }
-  return (
-    <Stack direction="row" py={1} flexWrap="wrap" gap={0.5}>
-      {StationPowerValues.map(({ label, value }) => (
-        <Chip
-          label={label}
-          key={value}
-          clickable
-          color="info"
-          variant={states.includes(value) ? "filled" : "outlined"}
-          onClick={() => handleChipClick(value)}
-        />
-      ))}
-    </Stack>
-  )
-}
-
-const DCFilter = () => {
-  return (
-    <Stack direction="row" py={1} flexWrap="wrap" gap={0.5}>
-      <Chip label="있음" />
-      <Chip label="없음" />
-    </Stack>
-  )
-}
+// const PowerFilter = () => {
+//   const [powers, setPowers] = useRecoilState(powerState)
+//   const handleChipClick = (value: number) => {
+//     if (powers?.includes(value)) {
+//       setPowers(powers?.filter((state) => state !== value))
+//     } else {
+//       setPowers(powers ? [...powers, value] : [value])
+//     }
+//   }
+//   return (
+//     <Stack direction="row" py={1} flexWrap="wrap" gap={0.5}>
+//       {StationPowerValues.map(({ label, value }) => (
+//         <Chip
+//           label={label}
+//           key={value}
+//           clickable
+//           color="info"
+//           variant={powers?.includes(value) ? "filled" : "outlined"}
+//           onClick={() => handleChipClick(value)}
+//         />
+//       ))}
+//     </Stack>
+//   )
+// }
 
 const marks = [
   {
@@ -151,10 +117,4 @@ const ParkingFeeDiscountFilter = () => {
   )
 }
 
-export {
-  StateFilter,
-  PowerFilter,
-  DCFilter,
-  FreeParkingFilter,
-  ParkingFeeDiscountFilter,
-}
+export { StateFilter, FreeParkingFilter, ParkingFeeDiscountFilter }

@@ -125,7 +125,7 @@ export default function Home({
           <SearchInput stations={stations} />
         </Container>
         <Container maxWidth="sm" sx={{ mx: "auto", display: "flex", gap: 1 }}>
-          <StationFilter stations={stations} />
+          <StationFilter />
         </Container>
       </Layout.Header>
       <Layout.Main>

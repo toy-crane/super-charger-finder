@@ -1,12 +1,4 @@
-import { atom } from "recoil"
-
-export type StationFilterStates = {
-  states: string[]
-  power: number[]
-  hasDC?: boolean
-  freeParkingTimeRange: number[]
-  hasParkingDiscount?: boolean
-}
+import { atom, selector } from "recoil"
 
 export const searchedStationIdState = atom<number | undefined>({
   key: "searchedStationId",
@@ -14,16 +6,6 @@ export const searchedStationIdState = atom<number | undefined>({
 })
 
 export const inputFocusState = atom<boolean>({
-  key: "inputFocusState",
+  key: "inputFocus",
   default: false,
-})
-
-export const statesState = atom<string[]>({
-  key: "statesState",
-  default: [],
-})
-
-export const powerState = atom<number[]>({
-  key: "powerState",
-  default: [],
 })
