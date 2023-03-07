@@ -1,56 +1,43 @@
 import * as React from "react"
-import { station } from "../../types/domain"
 import Filter from "@mui/material/Chip"
 import Stack from "@mui/material/Stack"
 import { Box } from "@mui/material"
 import { StateFilter } from "./filter-item"
 
 import { useRecoilValue } from "recoil"
-import {
-  stationFilterState,
-  StationFilterState,
-  stationFilterLablesState,
-} from "../../atoms/station-filter"
-
-interface Filter {
-  key: keyof StationFilterState
-  label: string
-}
-
-const StationFilterItems: Filter[] = [{ key: "states", label: "지역" }]
+import { stationFilterValuesState } from "../../atoms/station-filter"
 
 export default function StationFilter() {
-  const stationFilter = useRecoilValue(stationFilterState)
-  const stationFilterLabels = useRecoilValue(stationFilterLablesState)
-  const [openedFilter, setOpenedFilter] = React.useState<Filter | null>(null)
+  const stationFilterValues = useRecoilValue(stationFilterValuesState)
+  const [openedFilterItem, setopenedFilterItem] = React.useState<string>()
 
-  const handleClick = (clickedChip: Filter) => {
-    setOpenedFilter((openedFilter) =>
-      openedFilter?.key === clickedChip?.key ? null : clickedChip
-    )
+  const handleClick = (value: string) => {
+    setopenedFilterItem(value === openedFilterItem ? undefined : value)
   }
 
   return (
     <Box display={"flex"} flexDirection={"column"} gap={1}>
       <Stack direction="row" spacing={1} py={1}>
-        {StationFilterItems.map((item) => (
+        {stationFilterValues.map((field) => (
           <Filter
-            label={stationFilterLabels[item.key]}
+            label={field.label}
             clickable
-            color={stationFilter[item.key] ? "primary" : "info"}
-            variant={openedFilter?.key === item.key ? "filled" : "outlined"}
-            onClick={() => handleClick(item)}
-            key={item.key}
+            color={field.active ? "primary" : "info"}
+            variant={openedFilterItem === field.value ? "filled" : "outlined"}
+            onClick={() => handleClick(field.value)}
+            key={field.value}
           />
         ))}
       </Stack>
-      {openedFilter && <SelectedFilterItemForm filter={openedFilter} />}
+      {openedFilterItem && (
+        <SelectedFilterItemForm filterItem={openedFilterItem} />
+      )}
     </Box>
   )
 }
 
-const SelectedFilterItemForm = ({ filter }: { filter: Filter }) => {
-  switch (filter.key) {
+const SelectedFilterItemForm = ({ filterItem }: { filterItem: string }) => {
+  switch (filterItem) {
     case "states":
       return <StateFilter />
     default:

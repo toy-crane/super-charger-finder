@@ -56,12 +56,16 @@ export const stationFilterState = selector<StationFilterState>({
   },
 })
 
-export const stationFilterLablesState = selector({
+export const stationFilterValuesState = selector<FieldsValue[]>({
   key: "stationFilterValues",
   get: ({ get }) => {
     const { states } = get(stationFilterState)
-    return {
-      states: states && states.length > 0 ? states.join(", ") : "지역",
-    }
+    return [
+      {
+        value: "states",
+        label: states.length > 0 ? states.join(", ") : "지역",
+        active: states.length > 0,
+      },
+    ]
   },
 })
