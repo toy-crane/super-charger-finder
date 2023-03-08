@@ -16,7 +16,7 @@ export interface Database {
           country_id: number | null
           date_opened: string | null
           dc_count: number | null
-          free_parking_charge_time: string | null
+          free_parking_charge_time: number
           id: number
           kr_name: string | null
           latitude: number | null
@@ -41,7 +41,7 @@ export interface Database {
           country_id?: number | null
           date_opened?: string | null
           dc_count?: number | null
-          free_parking_charge_time?: string | null
+          free_parking_charge_time: number
           id?: number
           kr_name?: string | null
           latitude?: number | null
@@ -66,7 +66,7 @@ export interface Database {
           country_id?: number | null
           date_opened?: string | null
           dc_count?: number | null
-          free_parking_charge_time?: string | null
+          free_parking_charge_time?: number
           id?: number
           kr_name?: string | null
           latitude?: number | null

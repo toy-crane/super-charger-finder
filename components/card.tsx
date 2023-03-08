@@ -34,9 +34,9 @@ const ChargingStationCard = ({
           {short_state} - {city} | {common_name}
         </Typography>
         <Typography variant="subtitle1" sx={{ mb: 0.5, fontWeight: "bold" }}>
-          무료 회차:{" "}
+          회차 시간:{" "}
           {free_parking_charge_time
-            ? free_parking_charge_time === "free"
+            ? free_parking_charge_time === 60
               ? "무료"
               : `${free_parking_charge_time}분`
             : "없음"}

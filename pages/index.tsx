@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 
 import { Container, IconButton, Stack } from "@mui/material"
 import ChargingStationCard from "../components/card"
@@ -6,22 +6,21 @@ import SearchInput from "../components/search-input"
 import StationModal from "../components/station-modal"
 import Head from "next/head"
 import { inputFocusState, searchedStationIdState } from "../atoms"
-import { useRecoilValue } from "recoil"
+import { useRecoilState, useRecoilValue } from "recoil"
 import Layout from "../components/layout"
 import MenuIcon from "@mui/icons-material/Menu"
 import Menu from "../components/menu"
 import { supabase } from "../libs/supabase-client"
 import { InferGetServerSidePropsType } from "next"
-import { station } from "../types/domain"
 import StationFilter from "../components/station-filter"
-
-type HomeServerSideProps = {
-  stations: station[]
-}
+import { filteredStationsState, stationsState } from "../atoms/station"
 
 export default function Home({
-  stations,
+  initialStations,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  const [stations, setStations] = useRecoilState(stationsState)
+  const fiteredStations = useRecoilValue(filteredStationsState)
+
   const [selectedStationId, setSelectedStationId] = useState<number>()
   const searchedStationId = useRecoilValue(searchedStationIdState)
   const isInputFocused = useRecoilValue(inputFocusState)
@@ -35,20 +34,24 @@ export default function Home({
     setSelectedStationId(id)
   }
 
-  const selectedStation = stations?.find(
+  const selectedStation = fiteredStations?.find(
     (station) => station.id === selectedStationId
   )
 
-  const searchedStation = stations?.find(
+  const searchedStation = fiteredStations?.find(
     (station) => station.id === searchedStationId
   )
 
-  const searchedStations = searchedStation ? [searchedStation] : stations
+  const searchedStations = searchedStation ? [searchedStation] : fiteredStations
 
   const handleCardClick = (id: number) => {
     handleSelectedStation(id)
     handleOpen()
   }
+
+  useEffect(() => {
+    setStations(initialStations)
+  }, [initialStations, setStations])
 
   return (
     <>
@@ -150,6 +153,7 @@ export default function Home({
 }
 export const getServerSideProps = async () => {
   const { data, error } = await supabase.from("stations").select()
+  console.log(data)
 
   if (!data || error) {
     throw Error("정삭적으로 데이터를 가져오지 못했습니다.")
@@ -157,7 +161,7 @@ export const getServerSideProps = async () => {
 
   return {
     props: {
-      stations: data,
+      initialStations: data,
     },
   }
 }
