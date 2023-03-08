@@ -38,11 +38,9 @@ export default function Home({
     (station) => station.id === selectedStationId
   )
 
-  const searchedStation = fiteredStations?.find(
-    (station) => station.id === searchedStationId
+  const searchedStations = fiteredStations?.filter(
+    (station) => !searchedStationId || station.id === searchedStationId
   )
-
-  const searchedStations = searchedStation ? [searchedStation] : fiteredStations
 
   const handleCardClick = (id: number) => {
     handleSelectedStation(id)
