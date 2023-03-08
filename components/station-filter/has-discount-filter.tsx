@@ -32,7 +32,7 @@ const HasDiscountFilter = () => {
     }
   }
   return (
-    <Stack direction="row" py={1} flexWrap="wrap" gap={0.5}>
+    <Stack direction="row" flexWrap="wrap" gap={0.5}>
       {fields.map((field) => (
         <Chip
           label={field.label}

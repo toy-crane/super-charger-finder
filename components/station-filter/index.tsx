@@ -1,7 +1,7 @@
 import * as React from "react"
 import Filter from "@mui/material/Chip"
 import Stack from "@mui/material/Stack"
-import { Box } from "@mui/material"
+import { Box, Divider } from "@mui/material"
 
 import { selector, useRecoilValue } from "recoil"
 import {
@@ -69,6 +69,7 @@ export default function StationFilter() {
       flexDirection={"column"}
       gap={1}
       flexGrow={1}
+      py={0.5}
       width="100%"
     >
       <Stack
@@ -81,7 +82,13 @@ export default function StationFilter() {
           <Filter
             label={field.label}
             clickable
-            color={field.active ? "primary" : "info"}
+            color={
+              field.active
+                ? "primary"
+                : openedFilterItem === field.value
+                ? "primary"
+                : "info"
+            }
             variant={openedFilterItem === field.value ? "filled" : "outlined"}
             onClick={() => handleClick(field.value)}
             key={field.value}
@@ -89,7 +96,12 @@ export default function StationFilter() {
         ))}
       </Stack>
       {openedFilterItem && (
-        <SelectedFilterItemForm filterItem={openedFilterItem} />
+        <>
+          <Divider />
+          <Box py={1}>
+            <SelectedFilterItemForm filterItem={openedFilterItem} />
+          </Box>
+        </>
       )}
     </Box>
   )

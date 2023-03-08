@@ -28,7 +28,7 @@ const PowerFilter = () => {
     }
   }
   return (
-    <Stack direction="row" py={1} flexWrap="wrap" gap={0.5}>
+    <Stack direction="row" flexWrap="wrap" gap={0.5}>
       {fields.map(({ label, value, active }) => (
         <Chip
           label={label}

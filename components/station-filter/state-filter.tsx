@@ -1,4 +1,4 @@
-import { Box, Chip, Slider, Stack } from "@mui/material"
+import { Box, Chip, Slider, Stack, useTheme } from "@mui/material"
 import React from "react"
 import { selector, useRecoilState, useRecoilValue } from "recoil"
 import { FieldsValue, statesState } from "../../atoms/station-filter"
@@ -36,6 +36,7 @@ export const stateFieldValues = selector<FieldsValue<string>[]>({
 })
 
 const StateFilter = () => {
+  const theme = useTheme()
   const [states, setStates] = useRecoilState(statesState)
   const fields = useRecoilValue(stateFieldValues)
   const handleChipClick = (stateName: string) => {
@@ -46,12 +47,12 @@ const StateFilter = () => {
     }
   }
   return (
-    <Stack direction="row" py={1} flexWrap="wrap" gap={0.5}>
+    <Stack direction="row" flexWrap="wrap" gap={0.5}>
       {fields.map((field) => (
         <Chip
           label={field.label}
           key={field.value}
-          color="info"
+          color={"info"}
           variant={field.active ? "filled" : "outlined"}
           clickable
           onClick={() => handleChipClick(field.value)}
