@@ -3,7 +3,7 @@ import React from "react"
 import { selector, useRecoilState, useRecoilValue } from "recoil"
 import { FieldsValue, powerState } from "../../atoms/station-filter"
 
-const PowerNames = [120, 250]
+const PowerNames = [250, 120]
 
 export const PowerFieldValues = selector<FieldsValue<number>[]>({
   key: "powerFieldValues",
