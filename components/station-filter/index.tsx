@@ -1,7 +1,7 @@
 import * as React from "react"
 import Filter from "@mui/material/Chip"
 import Stack from "@mui/material/Stack"
-import { Box, Divider } from "@mui/material"
+import { Box, Collapse, Divider } from "@mui/material"
 
 import { selector, useRecoilValue } from "recoil"
 import {
@@ -89,6 +89,7 @@ export default function StationFilter() {
       flexGrow={1}
       py={0.5}
       width="100%"
+      ref={filterDivRef}
     >
       <Stack
         direction="row"
@@ -113,14 +114,14 @@ export default function StationFilter() {
           />
         ))}
       </Stack>
-      {openedFilterItem && (
-        <Box ref={filterDivRef}>
-          <Divider />
-          <Box py={1}>
+      <Collapse in={!!openedFilterItem}>
+        <Divider />
+        <Box py={1}>
+          {openedFilterItem && (
             <SelectedFilterItemForm filterItem={openedFilterItem} />
-          </Box>
+          )}
         </Box>
-      )}
+      </Collapse>
     </Box>
   )
 }
