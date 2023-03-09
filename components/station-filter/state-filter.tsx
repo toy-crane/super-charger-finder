@@ -1,4 +1,4 @@
-import { Box, Chip, Slider, Stack, useTheme } from "@mui/material"
+import { Chip, Stack } from "@mui/material"
 import React from "react"
 import { selector, useRecoilState, useRecoilValue } from "recoil"
 import { FieldsValue, statesState } from "../../atoms/station-filter"
@@ -27,20 +27,34 @@ export const stateFieldValues = selector<FieldsValue<string>[]>({
   key: "stateFieldValues",
   get: ({ get }) => {
     const state = get(statesState)
-    return StateNames.map((stateName) => ({
-      label: stateName,
-      value: stateName,
-      active: state.includes(stateName),
-    })).sort((a, b) => (a.active === b.active ? 0 : a.active ? -1 : 1))
+    const allField = {
+      label: "전국",
+      value: "all",
+      active: state.length === 0,
+    }
+    const fields = [
+      allField,
+      ...StateNames.map((stateName) => ({
+        label: stateName,
+        value: stateName,
+        active: state.includes(stateName),
+      })),
+    ]
+    return [
+      fields[0],
+      ...fields
+        .slice(1)
+        .sort((a, b) => (a.active === b.active ? 0 : a.active ? -1 : 1)),
+    ]
   },
 })
 
 const StateFilter = () => {
-  const theme = useTheme()
   const [states, setStates] = useRecoilState(statesState)
   const fields = useRecoilValue(stateFieldValues)
   const handleChipClick = (stateName: string) => {
-    if (states?.includes(stateName)) {
+    if (stateName === "all") setStates([])
+    else if (states?.includes(stateName)) {
       setStates(states.filter((state) => state !== stateName))
     } else {
       setStates(states ? [...states, stateName] : [stateName])
