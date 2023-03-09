@@ -8,6 +8,7 @@ import {
   FilterFieldsValue,
   stationFilterState,
 } from "../../atoms/station-filter"
+
 import StateFilter from "./state-filter"
 import PowerFilter from "./power-filter"
 import HasDiscountFilter from "./has-discount-filter"
@@ -62,6 +63,23 @@ export default function StationFilter() {
   const handleClick = (value: FilterFieldsValue["value"]) => {
     setopenedFilterItem(value === openedFilterItem ? undefined : value)
   }
+  const filterDivRef = React.useRef<HTMLDivElement>(null)
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      filterDivRef.current &&
+      !filterDivRef.current.contains(event.target as Node)
+    ) {
+      setopenedFilterItem(undefined)
+    }
+  }
+
+  React.useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [filterDivRef])
 
   return (
     <Box
@@ -96,12 +114,12 @@ export default function StationFilter() {
         ))}
       </Stack>
       {openedFilterItem && (
-        <>
+        <Box ref={filterDivRef}>
           <Divider />
           <Box py={1}>
             <SelectedFilterItemForm filterItem={openedFilterItem} />
           </Box>
-        </>
+        </Box>
       )}
     </Box>
   )
