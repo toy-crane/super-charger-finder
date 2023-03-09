@@ -3,28 +3,43 @@ import React from "react"
 import { selector, useRecoilState, useRecoilValue } from "recoil"
 import { FieldsValue, powerState } from "../../atoms/station-filter"
 
-const PowerNames = [250, 120]
+const PowerNames = ["250", "120"]
 
-export const PowerFieldValues = selector<FieldsValue<number>[]>({
+export const PowerFieldValues = selector<FieldsValue<string>[]>({
   key: "powerFieldValues",
   get: ({ get }) => {
     const powers = get(powerState)
-    return PowerNames.map((name) => ({
-      label: `${name}kW`,
-      value: name,
-      active: powers.includes(name),
-    })).sort((a, b) => (a.active === b.active ? 0 : a.active ? -1 : 1))
+    const allField = {
+      label: "모든 충전기",
+      value: "all",
+      active: powers.length === 0,
+    }
+    const fields = [
+      allField,
+      ...PowerNames.map((name) => ({
+        label: `${name}kW`,
+        value: name,
+        active: powers.includes(Number(name)),
+      })),
+    ]
+    return [
+      fields[0],
+      ...fields
+        .slice(1)
+        .sort((a, b) => (a.active === b.active ? 0 : a.active ? -1 : 1)),
+    ]
   },
 })
 
 const PowerFilter = () => {
   const [powers, setPowers] = useRecoilState(powerState)
   const fields = useRecoilValue(PowerFieldValues)
-  const handleChipClick = (value: number) => {
-    if (powers?.includes(value)) {
-      setPowers(powers?.filter((state) => state !== value))
+  const handleChipClick = (value: string) => {
+    if (value === "all") setPowers([])
+    else if (powers?.includes(Number(value))) {
+      setPowers(powers?.filter((state) => state !== Number(value)))
     } else {
-      setPowers(powers ? [...powers, value] : [value])
+      setPowers(powers ? [...powers, Number(value)] : [Number(value)])
     }
   }
   return (
