@@ -1,20 +1,25 @@
 import { Chip, Stack } from "@mui/material"
-import { selector, useRecoilState, useRecoilValue } from "recoil"
+import { selector, useRecoilValue, useSetRecoilState } from "recoil"
 import { FieldsValue, hasDiscountState } from "../../atoms/station-filter"
 
-export const hasDiscountFieldValues = selector<FieldsValue<boolean>[]>({
+export const hasDiscountFieldValues = selector<FieldsValue<string>[]>({
   key: "hasDiscountFieldValues",
   get: ({ get }) => {
     const hasDiscount = get(hasDiscountState)
     return [
       {
+        label: "전체",
+        value: "all",
+        active: hasDiscount === undefined,
+      },
+      {
         label: "할인 있음",
-        value: true,
+        value: "true",
         active: hasDiscount === true,
       },
       {
         label: "할인 없음",
-        value: false,
+        value: "false",
         active: hasDiscount === false,
       },
     ]
@@ -22,13 +27,13 @@ export const hasDiscountFieldValues = selector<FieldsValue<boolean>[]>({
 })
 
 const HasDiscountFilter = () => {
-  const [hasDiscount, setHasDiscount] = useRecoilState(hasDiscountState)
+  const setHasDiscount = useSetRecoilState(hasDiscountState)
   const fields = useRecoilValue(hasDiscountFieldValues)
-  const handleChipClick = (value: boolean) => {
-    if (hasDiscount === value) {
-      setHasDiscount(undefined)
-    } else {
-      setHasDiscount(value)
+  const handleChipClick = (value: string) => {
+    if (value === "all") setHasDiscount(undefined)
+    else if (value === "true") setHasDiscount(true)
+    else {
+      setHasDiscount(false)
     }
   }
   return (
