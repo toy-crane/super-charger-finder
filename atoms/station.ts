@@ -14,8 +14,6 @@ export const filteredStationsState = selector<station[]>({
     const { states, powers, hasDiscount, freeParkingTime } =
       get(stationFilterState)
 
-    console.log(freeParkingTime)
-
     const filteredStations = stations.filter((station) => {
       if (states.length > 0 && !states.includes(station.short_state))
         return false

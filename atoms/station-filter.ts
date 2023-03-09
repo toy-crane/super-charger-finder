@@ -4,7 +4,7 @@ export type StationFilterState = {
   states: string[]
   powers: number[]
   hasDiscount?: boolean
-  freeParkingTime: [number, number] | []
+  freeParkingTime: [number, number]
 }
 
 export type FieldsValue<T> = {

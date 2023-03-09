@@ -151,7 +151,6 @@ export default function Home({
 }
 export const getServerSideProps = async () => {
   const { data, error } = await supabase.from("stations").select()
-  console.log(data)
 
   if (!data || error) {
     throw Error("정삭적으로 데이터를 가져오지 못했습니다.")
