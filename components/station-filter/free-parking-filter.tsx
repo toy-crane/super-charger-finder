@@ -88,7 +88,6 @@ const FreeParkingFilter = () => {
           onChange={handleSliderChange}
           value={freeParkingTime}
           getAriaValueText={(value) => `${value} 분`}
-          valueLabelDisplay="auto"
           marks={marks}
           step={5}
           min={0}
