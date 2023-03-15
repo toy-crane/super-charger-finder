@@ -84,9 +84,9 @@ const StationDetailCard = ({
         <Box sx={{ mb: 3 }}>
           <Typography variant="subtitle1">주차요금</Typography>
           <Typography variant="body1" sx={{ fontWeight: "bold" }}>
-            무료 회차 시간 -{" "}
+            무료주차 시간 -{" "}
             {free_parking_charge_time
-              ? free_parking_charge_time === 60
+              ? free_parking_charge_time === 70
                 ? "무료"
                 : `${free_parking_charge_time}분`
               : "없음"}
