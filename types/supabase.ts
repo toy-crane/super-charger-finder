@@ -11,6 +11,7 @@ export interface Database {
     Tables: {
       stations: {
         Row: {
+          charging_method: string
           city: string | null
           common_name: string | null
           country_id: number | null
@@ -36,6 +37,7 @@ export interface Database {
           street_name: string
         }
         Insert: {
+          charging_method: string
           city?: string | null
           common_name?: string | null
           country_id?: number | null
@@ -61,6 +63,7 @@ export interface Database {
           street_name: string
         }
         Update: {
+          charging_method?: string
           city?: string | null
           common_name?: string | null
           country_id?: number | null

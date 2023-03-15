@@ -13,11 +13,12 @@ import StateFilter from "./state-filter"
 import PowerFilter from "./power-filter"
 import HasDiscountFilter from "./has-discount-filter"
 import FreeParkingFilter from "./free-parking-filter"
+import ChargingMethodFilter from "./charging-method-filter"
 
 export const stationFilterValuesState = selector<FilterFieldsValue[]>({
   key: "stationFilterValues",
   get: ({ get }) => {
-    const { states, powers, hasDiscount, freeParkingTime } =
+    const { states, powers, hasDiscount, freeParkingTime, chargingMethods } =
       get(stationFilterState)
     return [
       {
@@ -32,6 +33,16 @@ export const stationFilterValuesState = selector<FilterFieldsValue[]>({
             ? `속도 ${powers.map((p) => `${p}W`).join(", ")}`
             : "충전속도",
         active: powers.length > 0,
+      },
+      {
+        value: "chargingMethods",
+        label:
+          chargingMethods.length > 0
+            ? `과금방식 ${chargingMethods
+                .map((m) => (m === "minute" ? "분당" : "KW"))
+                .join(", ")}`
+            : "과금방식",
+        active: chargingMethods.length > 0,
       },
       {
         value: "hasDiscount",
@@ -144,6 +155,8 @@ const SelectedFilterItemForm = ({
       return <HasDiscountFilter />
     case "freeParkingTime":
       return <FreeParkingFilter />
+    case "chargingMethods":
+      return <ChargingMethodFilter />
     default:
       return null
   }

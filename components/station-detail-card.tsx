@@ -17,6 +17,15 @@ const isShareSupported = () => navigator.share ?? false
 
 const MODIFY_SUCHA_FORM_URL = "https://forms.gle/QPjyUhmLpTw2Ux3j9"
 
+const getChargingMethodLabel = (chargingMethod: string) => {
+  switch (chargingMethod) {
+    case "minute":
+      return "분당 과금"
+    case "kw":
+      return "KW당 과금"
+  }
+}
+
 const StationDetailCard = ({
   name,
   street_name,
@@ -33,6 +42,7 @@ const StationDetailCard = ({
   longitude,
   common_name,
   kr_name,
+  charging_method,
   location_id,
 }: StationDetailCardProps) => {
   const handleShare = () => {
@@ -52,7 +62,11 @@ const StationDetailCard = ({
           color="primary"
           size="small"
           variant={power_kilowatt === 120 ? "filled" : "outlined"}
-          label={power_kilowatt === 250 ? "V3 | 250W" : "V2 | 120W"}
+          label={
+            power_kilowatt === 250
+              ? `V3 | ${getChargingMethodLabel(charging_method)}`
+              : `V2 | ${getChargingMethodLabel(charging_method)}`
+          }
           sx={{ mb: 1 }}
         ></Chip>
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>

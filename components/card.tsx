@@ -5,11 +5,21 @@ interface ChargingStationCardProps extends station {
   onClick: (id: number) => void
 }
 
+const getChargingMethodLabel = (chargingMethod: string) => {
+  switch (chargingMethod) {
+    case "minute":
+      return "분당 과금"
+    case "kw":
+      return "KW당 과금"
+  }
+}
+
 const ChargingStationCard = ({
   short_state,
   city,
   free_parking_charge_time,
   power_kilowatt,
+  charging_method,
   stall_count,
   dc_count,
   common_name,
@@ -27,7 +37,11 @@ const ChargingStationCard = ({
           color="primary"
           size="small"
           variant={power_kilowatt === 250 ? "filled" : "outlined"}
-          label={power_kilowatt === 250 ? "V3 | 250W" : "V2 | 120W"}
+          label={
+            power_kilowatt === 250
+              ? `V3 | ${getChargingMethodLabel(charging_method)}`
+              : `V2 | ${getChargingMethodLabel(charging_method)}`
+          }
           sx={{ mb: 1 }}
         ></Chip>
         <Typography variant="h5" component="div">

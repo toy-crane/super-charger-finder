@@ -4,6 +4,7 @@ export type StationFilterState = {
   states: string[]
   powers: number[]
   hasDiscount?: boolean
+  chargingMethods: string[]
   freeParkingTime: [number, number]
 }
 
@@ -34,6 +35,13 @@ export const hasDiscountState = atom<StationFilterState["hasDiscount"]>({
   default: undefined,
 })
 
+export const chargingMethodsState = atom<StationFilterState["chargingMethods"]>(
+  {
+    key: "chargingMethods",
+    default: [],
+  }
+)
+
 export const freeParkingTimeState = atom<StationFilterState["freeParkingTime"]>(
   {
     key: "freeParkingTime",
@@ -49,6 +57,7 @@ export const stationFilterState = selector<StationFilterState>({
       powers: get(powerState),
       hasDiscount: get(hasDiscountState),
       freeParkingTime: get(freeParkingTimeState),
+      chargingMethods: get(chargingMethodsState),
     }
   },
 })

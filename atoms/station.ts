@@ -11,7 +11,7 @@ export const filteredStationsState = selector<station[]>({
   key: "filteredStations",
   get: ({ get }) => {
     const stations = get(stationsState)
-    const { states, powers, hasDiscount, freeParkingTime } =
+    const { states, powers, hasDiscount, freeParkingTime, chargingMethods } =
       get(stationFilterState)
 
     const filteredStations = stations.filter((station) => {
@@ -30,6 +30,12 @@ export const filteredStationsState = selector<station[]>({
           station.free_parking_charge_time > (freeParkingTime[1] as number))
       )
         return false
+      if (
+        chargingMethods.length > 0 &&
+        !chargingMethods.includes(station.charging_method)
+      ) {
+        return false
+      }
       return true
     })
 
