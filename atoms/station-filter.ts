@@ -37,7 +37,7 @@ export const hasDiscountState = atom<StationFilterState["hasDiscount"]>({
 export const freeParkingTimeState = atom<StationFilterState["freeParkingTime"]>(
   {
     key: "freeParkingTime",
-    default: [0, 60],
+    default: [0, 70],
   }
 )
 

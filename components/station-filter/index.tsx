@@ -46,10 +46,14 @@ export const stationFilterValuesState = selector<FilterFieldsValue[]>({
       {
         value: "freeParkingTime",
         label:
-          JSON.stringify(freeParkingTime) === JSON.stringify([0, 60])
+          JSON.stringify(freeParkingTime) === JSON.stringify([0, 70])
             ? "회차 시간"
-            : `회차 ${freeParkingTime[0]}분 ~ ${freeParkingTime[1]}분`,
-        active: JSON.stringify(freeParkingTime) !== JSON.stringify([0, 60]),
+            : JSON.stringify(freeParkingTime) === JSON.stringify([70, 70])
+            ? `무료`
+            : `회차 ${freeParkingTime[0]}분 ~ ${
+                freeParkingTime[1] === 70 ? "" : `${freeParkingTime[1]}분`
+              }`,
+        active: JSON.stringify(freeParkingTime) !== JSON.stringify([0, 70]),
       },
     ]
   },

@@ -30,11 +30,15 @@ const marks = [
   },
   {
     value: 60,
+    label: "60분",
+  },
+  {
+    value: 70,
     label: "무료",
   },
 ]
 
-const PARKING_TIMES = ["10", "20", "30", "40", "50"]
+const PARKING_TIMES = ["10", "20", "30", "40", "50", "60"]
 
 export const FreeParkingFieldValues = selector<FieldsValue<string>[]>({
   key: "freeParkingFieldValues",
@@ -43,13 +47,15 @@ export const FreeParkingFieldValues = selector<FieldsValue<string>[]>({
     const allField = {
       label: "전체",
       value: "all",
-      active: JSON.stringify(freeParkingTime) === JSON.stringify([0, 60]),
+      active: JSON.stringify(freeParkingTime) === JSON.stringify([0, 70]),
     }
+
     const freeField = {
       label: "무료",
-      value: "60",
-      active: JSON.stringify(freeParkingTime) === JSON.stringify([60, 60]),
+      value: "70",
+      active: JSON.stringify(freeParkingTime) === JSON.stringify([70, 70]),
     }
+
     const fields = [
       allField,
       ...PARKING_TIMES.map((time) => ({
@@ -57,7 +63,7 @@ export const FreeParkingFieldValues = selector<FieldsValue<string>[]>({
         value: time,
         active:
           JSON.stringify(freeParkingTime) ===
-          JSON.stringify([Number(time), 60]),
+          JSON.stringify([Number(time), 70]),
       })),
       freeField,
     ]
@@ -75,9 +81,9 @@ const FreeParkingFilter = () => {
   }
 
   const handleChipClick = (value: string) => {
-    if (value === "all") setFreeParkingTime([0, 60])
-    else if (value === "60") setFreeParkingTime([60, 60])
-    else setFreeParkingTime([Number(value), 60])
+    if (value === "all") setFreeParkingTime([0, 70])
+    else if (value === "70") setFreeParkingTime([70, 70])
+    else setFreeParkingTime([Number(value), 70])
   }
 
   return (
@@ -91,7 +97,7 @@ const FreeParkingFilter = () => {
           marks={marks}
           step={5}
           min={0}
-          max={60}
+          max={70}
         />
       </Box>
       <Stack direction="row" flexWrap="wrap" gap={0.5} py={1}>
