@@ -30,7 +30,7 @@ export const stationFilterValuesState = selector<FilterFieldsValue[]>({
         value: "powers",
         label:
           powers.length > 0
-            ? `속도 ${powers.map((p) => `${p}W`).join(", ")}`
+            ? `속도 ${powers.map((p) => (p === 250 ? "V3" : "V2")).join(", ")}`
             : "충전속도",
         active: powers.length > 0,
       },

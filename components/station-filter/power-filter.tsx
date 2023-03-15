@@ -3,7 +3,16 @@ import React from "react"
 import { selector, useRecoilState, useRecoilValue } from "recoil"
 import { FieldsValue, powerState } from "../../atoms/station-filter"
 
-const PowerNames = ["250", "120"]
+const PowerFields = [
+  {
+    value: "250",
+    label: "V3",
+  },
+  {
+    value: "120",
+    label: "V2",
+  },
+]
 
 export const PowerFieldValues = selector<FieldsValue<string>[]>({
   key: "powerFieldValues",
@@ -16,10 +25,10 @@ export const PowerFieldValues = selector<FieldsValue<string>[]>({
     }
     const fields = [
       allField,
-      ...PowerNames.map((name) => ({
-        label: `${name}kW`,
-        value: name,
-        active: powers.includes(Number(name)),
+      ...PowerFields.map(({ value, label }) => ({
+        label,
+        value,
+        active: powers.includes(Number(value)),
       })),
     ]
     return [
