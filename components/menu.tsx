@@ -61,6 +61,16 @@ const Menu = ({ openDrawer, onClick }: MenuProps) => {
               />
             </ListItemButton>
           </ListItem>
+          <ListItem>
+            <ListItemButton>
+              <ListItemText
+                primary="슈차 파인더 개발자에게 후원하기"
+                onClick={() =>
+                  (document.location = "https://toss.me/wonderwork")
+                }
+              />
+            </ListItemButton>
+          </ListItem>
         </List>
       </Box>
     </Drawer>
