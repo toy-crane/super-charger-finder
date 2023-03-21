@@ -8,14 +8,60 @@ import { supabase } from "../../libs/supabase-client"
 import ArrowBackIcon from "@mui/icons-material/ArrowBack"
 import { useRouter } from "next/router"
 import StationDetailCard from "../../components/station-detail-card"
+import Head from "next/head"
 
 export default function StationDetail({
   station,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const router = useRouter()
 
+  const metaTitle = `${station.common_name} 슈퍼차저`
+
   return (
     <>
+      <Head>
+        <title>{metaTitle}</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Super charger Finder" />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/favicon/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon/favicon-32x32.png"
+        />
+        <link rel="manifest" href="/favicon/site.webmanifest" />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon/favicon-16x16.png"
+        />
+        <link
+          rel="mask-icon"
+          href="/favicon/safari-pinned-tab.svg"
+          color="#5bbad5"
+        />
+        <link rel="shortcut icon" href="/favicon/favicon.ico" />
+        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta
+          name="msapplication-config"
+          content="/favicon/browserconfig.xml"
+        />
+        <meta name="theme-color" content="#ffffff" />
+        <meta property="og:image" content="/meta/og-image.jpeg" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="400" />
+        <meta property="og:title" content={metaTitle} />
+        <meta property="og:site_name" content={metaTitle} />
+        <meta property="og:description" content={metaTitle} />
+        <meta property="og:url" content="https://suchafinder.xyz/" />
+      </Head>
       <Layout.Header>
         <Container
           maxWidth="sm"

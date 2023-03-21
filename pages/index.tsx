@@ -85,10 +85,7 @@ export default function Home({
           property="og:description"
           content="가장 저렴한 슈퍼차저를 찾아보세요."
         />
-        <meta
-          property="og:url"
-          content="https://super-charger-finder.vercel.app/"
-        />
+        <meta property="og:url" content="https://suchafinder.xyz/" />
       </Head>
       <Layout.Header>
         <Container
