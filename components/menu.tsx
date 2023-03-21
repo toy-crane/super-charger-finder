@@ -68,7 +68,8 @@ const Menu = ({ openDrawer, onClick }: MenuProps) => {
                 onClick={() =>
                   (document.location = "https://toss.me/wonderwork")
                 }
-              />
+              /
+              >
             </ListItemButton>
           </ListItem>
         </List>
