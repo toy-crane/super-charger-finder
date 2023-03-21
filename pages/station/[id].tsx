@@ -1,13 +1,49 @@
+import { Container, IconButton } from "@mui/material"
 import {
   GetServerSidePropsContext,
   InferGetServerSidePropsType,
 } from "next/types"
+import Layout from "../../components/layout"
 import { supabase } from "../../libs/supabase-client"
+import ArrowBackIcon from "@mui/icons-material/ArrowBack"
+import { useRouter } from "next/router"
+import StationDetailCard from "../../components/station-detail-card"
 
 export default function StationDetail({
   station,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  return <div>{station.city}</div>
+  const router = useRouter()
+
+  return (
+    <>
+      <Layout.Header>
+        <Container
+          maxWidth="sm"
+          sx={{
+            mx: "auto",
+            py: 2,
+            display: "flex",
+            gap: 1,
+          }}
+        >
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            onClick={() => {
+              router.back()
+            }}
+          >
+            <ArrowBackIcon />
+          </IconButton>
+        </Container>
+      </Layout.Header>
+      <Layout.Main>
+        <StationDetailCard {...station} />
+      </Layout.Main>
+    </>
+  )
 }
 
 export const getServerSideProps = async (

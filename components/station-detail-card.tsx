@@ -1,10 +1,9 @@
 import {
   Box,
   Button,
-  Card,
-  CardActions,
-  CardContent,
   Chip,
+  Container,
+  Divider,
   Typography,
 } from "@mui/material"
 import EditIcon from "@mui/icons-material/Edit"
@@ -56,8 +55,8 @@ const StationDetailCard = ({
     }
   }
   return (
-    <Card sx={{ px: 3 }}>
-      <CardContent>
+    <Container sx={{ py: 3 }}>
+      <Box sx={{ mb: 2 }}>
         <Chip
           color="primary"
           size="small"
@@ -67,7 +66,7 @@ const StationDetailCard = ({
               ? `V3 | ${getChargingMethodLabel(charging_method)}`
               : `V2 | ${getChargingMethodLabel(charging_method)}`
           }
-          sx={{ mb: 1 }}
+          sx={{ mb: 2 }}
         ></Chip>
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
           <Typography variant="h5">
@@ -78,6 +77,9 @@ const StationDetailCard = ({
           </Link>
         </Box>
         <Typography variant="subtitle1">{kr_name}</Typography>
+      </Box>
+      <Divider />
+      <Box sx={{ my: 2 }}>
         <Typography variant="body1" color="text.secondary">
           {street_name}
         </Typography>
@@ -127,7 +129,7 @@ const StationDetailCard = ({
           </Box>
         )}
 
-        <CardActions sx={{ flexDirection: "column", gap: 1 }} disableSpacing>
+        <Box sx={{ flexDirection: "column", gap: 1, display: "flex" }}>
           <Button
             variant="outlined"
             color="info"
@@ -146,9 +148,9 @@ const StationDetailCard = ({
           >
             테슬라로 경로 전송
           </Button>
-        </CardActions>
-      </CardContent>
-    </Card>
+        </Box>
+      </Box>
+    </Container>
   )
 }
 

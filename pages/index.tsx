@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react"
 import { Container, IconButton, Stack } from "@mui/material"
 import ChargingStationCard from "../components/card"
 import SearchInput from "../components/search-input"
-import StationModal from "../components/station-modal"
 import Head from "next/head"
 import { inputFocusState, searchedStationIdState } from "../atoms"
 import { useRecoilState, useRecoilValue } from "recoil"
@@ -14,6 +13,7 @@ import { supabase } from "../libs/supabase-client"
 import { InferGetServerSidePropsType } from "next"
 import StationFilter from "../components/station-filter"
 import { filteredStationsState, stationsState } from "../atoms/station"
+import { useRouter } from "next/router"
 
 export default function Home({
   initialStations,
@@ -21,30 +21,18 @@ export default function Home({
   const [stations, setStations] = useRecoilState(stationsState)
   const fiteredStations = useRecoilValue(filteredStationsState)
 
-  const [selectedStationId, setSelectedStationId] = useState<number>()
   const searchedStationId = useRecoilValue(searchedStationIdState)
   const isInputFocused = useRecoilValue(inputFocusState)
-  const [open, setOpen] = useState(false)
   const [openDrawer, setOpenDrawer] = useState(false)
+  const router = useRouter()
   const handleDraweropen = () => setOpenDrawer((openDrawer) => !openDrawer)
-  const handleOpen = () => setOpen(true)
-  const handleClose = () => setOpen(false)
-
-  const handleSelectedStation = (id: number | undefined) => {
-    setSelectedStationId(id)
-  }
-
-  const selectedStation = fiteredStations?.find(
-    (station) => station.id === selectedStationId
-  )
 
   const searchedStations = fiteredStations?.filter(
     (station) => !searchedStationId || station.id === searchedStationId
   )
 
   const handleCardClick = (id: number) => {
-    handleSelectedStation(id)
-    handleOpen()
+    router.push(`/station/${id}`)
   }
 
   useEffect(() => {
@@ -140,11 +128,6 @@ export default function Home({
           ))}
         </Stack>
       </Layout.Main>
-      <StationModal
-        open={open}
-        onClose={handleClose}
-        selectedStation={selectedStation}
-      />
       <Menu onClick={handleDraweropen} openDrawer={openDrawer} />
     </>
   )
