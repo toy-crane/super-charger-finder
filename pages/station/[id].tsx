@@ -64,7 +64,7 @@ export default function StationDetail({
           maxWidth="sm"
           sx={{
             mx: "auto",
-            py: 2,
+            py: 1,
             display: "flex",
             gap: 1,
           }}

@@ -92,7 +92,7 @@ export default function Home({
           maxWidth="sm"
           sx={{
             mx: "auto",
-            py: 2,
+            my: 1,
             display: "flex",
             gap: 1,
           }}

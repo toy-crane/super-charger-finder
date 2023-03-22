@@ -102,7 +102,6 @@ export default function StationFilter() {
       flexDirection={"column"}
       gap={1}
       flexGrow={1}
-      py={0.5}
       width="100%"
       ref={filterDivRef}
     >
