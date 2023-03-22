@@ -17,7 +17,7 @@ import { useRouter } from "next/router"
 
 export default function Home({
   initialStations,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+}: InferGetServerSidePropsType<typeof getStaticProps>) {
   const [stations, setStations] = useRecoilState(stationsState)
   const fiteredStations = useRecoilValue(filteredStationsState)
 
@@ -129,7 +129,8 @@ export default function Home({
     </>
   )
 }
-export const getServerSideProps = async () => {
+
+export const getStaticProps = async () => {
   const { data, error } = await supabase.from("stations").select()
 
   if (!data || error) {
