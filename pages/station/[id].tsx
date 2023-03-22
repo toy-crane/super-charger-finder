@@ -1,8 +1,5 @@
 import { Container, IconButton } from "@mui/material"
-import {
-  GetServerSidePropsContext,
-  InferGetServerSidePropsType,
-} from "next/types"
+import { InferGetServerSidePropsType } from "next/types"
 import Layout from "../../components/layout"
 import { supabase } from "../../libs/supabase-client"
 import ArrowBackIcon from "@mui/icons-material/ArrowBack"
@@ -12,7 +9,7 @@ import Head from "next/head"
 
 export default function StationDetail({
   station,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+}: InferGetServerSidePropsType<typeof getStaticProps>) {
   const router = useRouter()
 
   const metaTitle = `${station.common_name} 슈퍼차저`
@@ -92,10 +89,16 @@ export default function StationDetail({
   )
 }
 
-export const getServerSideProps = async (
-  context: GetServerSidePropsContext
-) => {
-  const { id } = context.query
+export const getStaticPaths = async () => {
+  const { data: stations } = await supabase.from("stations").select()
+  const paths = stations?.map((station) => ({
+    params: { id: String(station.id) },
+  }))
+  return { paths, fallback: false }
+}
+
+export const getStaticProps = async (context: { params: { id: string } }) => {
+  const id = context.params.id
 
   const { data, error } = await supabase
     .from("stations")
