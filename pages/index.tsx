@@ -1,43 +1,43 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react";
 
-import { Container, IconButton, Stack } from "@mui/material"
-import ChargingStationCard from "../components/card"
-import SearchInput from "../components/search-input"
-import Head from "next/head"
-import { inputFocusState, searchedStationIdState } from "../atoms"
-import { useRecoilState, useRecoilValue } from "recoil"
-import Layout from "../components/layout"
-import MenuIcon from "@mui/icons-material/Menu"
-import Menu from "../components/menu"
-import { supabase } from "../libs/supabase-client"
-import { InferGetServerSidePropsType } from "next"
-import StationFilter from "../components/station-filter"
-import { filteredStationsState, stationsState } from "../atoms/station"
-import { useRouter } from "next/router"
+import { Container, IconButton, Stack } from "@mui/material";
+import ChargingStationCard from "../components/card";
+import SearchInput from "../components/search-input";
+import Head from "next/head";
+import { inputFocusState, searchedStationIdState } from "../atoms";
+import { useRecoilState, useRecoilValue } from "recoil";
+import Layout from "../components/layout";
+import MenuIcon from "@mui/icons-material/Menu";
+import Menu from "../components/menu";
+import { supabase } from "../libs/supabase-client";
+import { InferGetServerSidePropsType } from "next";
+import StationFilter from "../components/station-filter";
+import { filteredStationsState, stationsState } from "../atoms/station";
+import { useRouter } from "next/router";
 
 export default function Home({
   initialStations,
 }: InferGetServerSidePropsType<typeof getStaticProps>) {
-  const [stations, setStations] = useRecoilState(stationsState)
-  const fiteredStations = useRecoilValue(filteredStationsState)
+  const [stations, setStations] = useRecoilState(stationsState);
+  const fiteredStations = useRecoilValue(filteredStationsState);
 
-  const searchedStationId = useRecoilValue(searchedStationIdState)
-  const isInputFocused = useRecoilValue(inputFocusState)
-  const [openDrawer, setOpenDrawer] = useState(false)
-  const router = useRouter()
-  const handleDraweropen = () => setOpenDrawer((openDrawer) => !openDrawer)
+  const searchedStationId = useRecoilValue(searchedStationIdState);
+  const isInputFocused = useRecoilValue(inputFocusState);
+  const [openDrawer, setOpenDrawer] = useState(false);
+  const router = useRouter();
+  const handleDraweropen = () => setOpenDrawer((openDrawer) => !openDrawer);
 
   const searchedStations = fiteredStations?.filter(
     (station) => !searchedStationId || station.id === searchedStationId
-  )
+  );
 
   const handleCardClick = (id: number) => {
-    router.push(`/station/${id}`)
-  }
+    router.push(`/station/${id}`);
+  };
 
   useEffect(() => {
-    setStations(initialStations)
-  }, [initialStations, setStations])
+    setStations(initialStations);
+  }, [initialStations, setStations]);
 
   return (
     <>
@@ -86,6 +86,11 @@ export default function Home({
           content="가장 저렴한 슈퍼차저를 찾아보세요."
         />
         <meta property="og:url" content="https://suchafinder.xyz/" />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8400392513417741"
+          crossOrigin="anonymous"
+        ></script>
       </Head>
       <Layout.Header>
         <Container
@@ -127,19 +132,19 @@ export default function Home({
       </Layout.Main>
       <Menu onClick={handleDraweropen} openDrawer={openDrawer} />
     </>
-  )
+  );
 }
 
 export const getStaticProps = async () => {
-  const { data, error } = await supabase.from("stations").select()
+  const { data, error } = await supabase.from("stations").select();
 
   if (!data || error) {
-    throw Error("정삭적으로 데이터를 가져오지 못했습니다.")
+    throw Error("정삭적으로 데이터를 가져오지 못했습니다.");
   }
 
   return {
     props: {
       initialStations: data,
     },
-  }
-}
+  };
+};
